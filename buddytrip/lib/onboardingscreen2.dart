@@ -1,8 +1,7 @@
-import 'package:buddytrip/onboardingscreen2.dart';
 import 'package:flutter/material.dart';
 
-class Onboardingscreen1 extends StatelessWidget {
-  const Onboardingscreen1({super.key});
+class Onboardingscreen2 extends StatelessWidget {
+  const Onboardingscreen2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class Onboardingscreen1 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Welcome to BuddyTrip',
+                  Text('Screen 2',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
                     fontSize: 26,
@@ -51,11 +50,7 @@ class Onboardingscreen1 extends StatelessWidget {
                       width: 80,
                       height: 40,
                       child: FloatingActionButton(
-                      onPressed: (){
-                        Navigator.push(context, 
-                        MaterialPageRoute(builder: (context)=>Onboardingscreen2()));
-
-                      }, 
+                      onPressed: null, 
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
