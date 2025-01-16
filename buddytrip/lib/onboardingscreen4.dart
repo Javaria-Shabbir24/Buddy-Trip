@@ -33,7 +33,7 @@ class Onboardingscreen4 extends StatelessWidget {
                   Text('Track Your Expenses',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
-                    fontSize: 26,
+                    fontSize: 24,
                   ),),
                   SizedBox(height: 18,),
                   Align(
@@ -41,7 +41,7 @@ class Onboardingscreen4 extends StatelessWidget {
                     child: Text('Manage your travel budget with ease. Stay on top of your spending.',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                   ),

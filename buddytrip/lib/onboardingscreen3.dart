@@ -34,7 +34,7 @@ class Onboardingscreen3 extends StatelessWidget {
                   Text('Collaborate with Friends',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
-                    fontSize: 22,
+                    fontSize: 21,
                   ),),
                   SizedBox(height: 18,),
                   Align(

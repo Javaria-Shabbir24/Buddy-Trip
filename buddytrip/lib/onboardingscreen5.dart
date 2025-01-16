@@ -40,7 +40,7 @@ class Onboardingscreen5 extends StatelessWidget {
                     child: Text('Receive tailored suggestions based on your preferences.',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
-                    fontSize: 18,
+                    fontSize: 17,
                   ),
                   textAlign: TextAlign.center,
                   ),
