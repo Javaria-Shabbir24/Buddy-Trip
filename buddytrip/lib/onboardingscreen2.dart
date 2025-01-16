@@ -94,10 +94,16 @@ class Onboardingscreen2 extends StatelessWidget {
                       height: 40,
                       child: FloatingActionButton(
                       onPressed: (){
-                        PageTransition(type: PageTransitionType.rightToLeft,
-                        child: Onboardingscreen3(),
-                        duration: Duration(milliseconds: 500));
-                      }, 
+                        Navigator.push(context, 
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: Onboardingscreen3(),
+                          duration: Duration(milliseconds: 400),
+                        
+
+                        ));
+
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

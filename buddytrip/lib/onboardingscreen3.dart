@@ -30,10 +30,11 @@ class Onboardingscreen3 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  
                   Text('Collaborate with Friends',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
-                    fontSize: 26,
+                    fontSize: 22,
                   ),),
                   SizedBox(height: 18,),
                   Align(
@@ -41,7 +42,7 @@ class Onboardingscreen3 extends StatelessWidget {
                     child: Text('Invite friends and family to plan trips together. Share ideas, plans, and updates.',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                   ),
@@ -94,9 +95,11 @@ class Onboardingscreen3 extends StatelessWidget {
                       height: 40,
                       child: FloatingActionButton(
                       onPressed: (){
-                        PageTransition(type: PageTransitionType.rightToLeft,
+                        Navigator.push(context, 
+                        PageTransition(
+                        type: PageTransitionType.rightToLeft,
                         child: Onboardingscreen4(),
-                        duration: Duration(milliseconds: 500));
+                        duration: Duration(milliseconds: 500)));
 
                       }, 
                       child: Row(
