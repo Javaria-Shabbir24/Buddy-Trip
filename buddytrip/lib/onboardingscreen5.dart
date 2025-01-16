@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'onboardingscreen3.dart';
 import 'home.dart';
 
-class Onboardingscreen2 extends StatelessWidget {
-  const Onboardingscreen2({super.key});
+class Onboardingscreen5 extends StatelessWidget {
+  const Onboardingscreen5({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class Onboardingscreen2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Plan Your Journey',
+                  Text('Get Personalized Recommendations',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
                     fontSize: 26,
@@ -38,7 +37,7 @@ class Onboardingscreen2 extends StatelessWidget {
                   SizedBox(height: 18,),
                   Align(
                     alignment: Alignment.center,
-                    child: Text('Find destinations, create trips, and stay on track with ease.',
+                    child: Text('Receive tailored suggestions based on your preferences.',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 18,
@@ -94,10 +93,10 @@ class Onboardingscreen2 extends StatelessWidget {
                       height: 40,
                       child: FloatingActionButton(
                       onPressed: (){
-                        PageTransition(type: PageTransitionType.rightToLeft,
-                        child: Onboardingscreen3(),
-                        duration: Duration(milliseconds: 500));
-                      }, 
+                        Navigator.push(context, 
+                        MaterialPageRoute(builder: (context)=>Home()));
+
+                      },  
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [

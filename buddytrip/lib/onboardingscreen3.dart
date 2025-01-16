@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'onboardingscreen3.dart';
+import 'onboardingscreen4.dart';
 import 'home.dart';
 
-class Onboardingscreen2 extends StatelessWidget {
-  const Onboardingscreen2({super.key});
+class Onboardingscreen3 extends StatelessWidget {
+  const Onboardingscreen3({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class Onboardingscreen2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Plan Your Journey',
+                  Text('Collaborate with Friends',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
                     fontSize: 26,
@@ -38,7 +38,7 @@ class Onboardingscreen2 extends StatelessWidget {
                   SizedBox(height: 18,),
                   Align(
                     alignment: Alignment.center,
-                    child: Text('Find destinations, create trips, and stay on track with ease.',
+                    child: Text('Invite friends and family to plan trips together. Share ideas, plans, and updates.',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 18,
@@ -95,8 +95,9 @@ class Onboardingscreen2 extends StatelessWidget {
                       child: FloatingActionButton(
                       onPressed: (){
                         PageTransition(type: PageTransitionType.rightToLeft,
-                        child: Onboardingscreen3(),
+                        child: Onboardingscreen4(),
                         duration: Duration(milliseconds: 500));
+
                       }, 
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
