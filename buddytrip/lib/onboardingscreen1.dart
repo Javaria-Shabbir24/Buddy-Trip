@@ -1,4 +1,5 @@
 import 'package:buddytrip/onboardingscreen2.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
 class Onboardingscreen1 extends StatelessWidget {
@@ -8,7 +9,7 @@ class Onboardingscreen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage("assets/home.jpg"),
           fit: BoxFit.cover),
         ),
@@ -16,25 +17,25 @@ class Onboardingscreen1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Container(
-              padding: EdgeInsets.all(20),
+              padding:const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 2),
-                color: Color(0xFFD9D9D9),
+                color: const Color(0xFFD9D9D9),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Welcome to BuddyTrip',
+                  const Text('Welcome to BuddyTrip',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
                     fontSize: 26,
                   ),),
-                  SizedBox(height: 18,),
-                  Align(
+                  const SizedBox(height: 18,),
+                  const Align(
                     alignment: Alignment.center,
                     child: Text('Your perfect travel companion,always by your side.',
                     style: TextStyle(
@@ -44,7 +45,7 @@ class Onboardingscreen1 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   ),
                   ),
-                  SizedBox(height: 18,),
+                  const SizedBox(height: 18,),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Container(
@@ -53,10 +54,16 @@ class Onboardingscreen1 extends StatelessWidget {
                       child: FloatingActionButton(
                       onPressed: (){
                         Navigator.push(context, 
-                        MaterialPageRoute(builder: (context)=>Onboardingscreen2()));
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: Onboardingscreen2(),
+                          duration: Duration(milliseconds: 400),
+                        
+
+                        ));
 
                       }, 
-                      child: Row(
+                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(width: 10,),
@@ -70,20 +77,16 @@ class Onboardingscreen1 extends StatelessWidget {
                           Icon(Icons.arrow_forward, color: Colors.white, size: 18),
                         ],
                       ),
-                    backgroundColor: Color(0xFF8F8989),
+                    backgroundColor: const Color(0xFF8F8989),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: Colors.black,
                         width: 1,
                       ),
                     ),
-                    
-                    
                     ),
-                    )
-                    
-                    
+                    ),
                   ),
                 ],
               ),

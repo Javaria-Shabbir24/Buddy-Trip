@@ -7,12 +7,12 @@ class Onboardingscreen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage("assets/home.jpg"),
           fit: BoxFit.cover),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: EdgeInsets.all(20),
@@ -27,7 +27,7 @@ class Onboardingscreen2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Screen 2',
+                  Text('Plan Your Journey',
                   style: TextStyle(
                     fontFamily: 'IrishGrover',
                     fontSize: 26,
