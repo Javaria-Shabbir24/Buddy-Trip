@@ -5,6 +5,24 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
+      endDrawer: Drawer(),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Divider(
+              color: Colors.black,
+              thickness: 2,
+            )
+          ],
+        ),
+      ),
+      
+    );
   }
 }
