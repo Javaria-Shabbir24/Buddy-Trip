@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "410900041564",
+    "project_id": "buddytrip-b6103",
+    "storage_bucket": "buddytrip-b6103.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410900041564:android:391be54a4063cd3e18fb99",
+        "android_client_info": {
+          "package_name": "com.example.buddytrip"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4G3u-OlqOacttDpMc2drZhXh1pqiAkGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

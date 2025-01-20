@@ -1,3 +1,4 @@
+import 'package:buddytrip/signup.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
@@ -51,8 +52,10 @@ class Home extends StatelessWidget {
                       width: 100,
                       height: 40,
                       child: FloatingActionButton(
-                      onPressed: null,
-                       child: Row(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
+                      },
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(width: 10,),
