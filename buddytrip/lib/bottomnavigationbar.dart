@@ -1,4 +1,5 @@
 import 'package:buddytrip/about.dart';
+import 'package:buddytrip/help.dart';
 import 'package:buddytrip/homepage.dart';
 import 'package:buddytrip/profile.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,9 @@ class _BottomnavigationbarState extends State<Bottomnavigationbar> {
     }
     else if(index==2){
       Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+    }
+    else if(index==3){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Help()));
     }
   }
   @override
