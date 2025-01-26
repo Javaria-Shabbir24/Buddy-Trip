@@ -36,16 +36,28 @@ class _ResetpasswordState extends State<Resetpassword> {
           SizedBox(height: 20,),
           Padding(padding: EdgeInsets.all(20),
           child: Form(
-            //set key
+            key: formKey,
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Email:',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
               ),),
+              SizedBox(height: 20,),
               TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  hintText: 'Enter your email address',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value){
+                  if(value== null ||value.isEmpty){
+                    return 'usrename not entered';
+                  }
+                  return null;
+                },
                 
                 
               )
