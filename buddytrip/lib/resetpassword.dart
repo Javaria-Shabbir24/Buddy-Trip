@@ -11,6 +11,7 @@ class _ResetpasswordState extends State<Resetpassword> {
   final formKey= GlobalKey<FormState>();
   final emailController=TextEditingController();
   final passwordController=TextEditingController();
+  final confirmPasswordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +76,27 @@ class _ResetpasswordState extends State<Resetpassword> {
                 validator: (value){
                   if(value==null||value.isEmpty){
                     return('Password not entered');
+                  }
+                  return null;
+                },
+
+              ),
+              SizedBox(height: 20,),
+              Text('Confirm Password:',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
+              SizedBox(height: 20,),
+              TextFormField(
+                controller: confirmPasswordController,
+                decoration: InputDecoration(
+                  hintText: 'Confirm your new password',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value){
+                  if(value==null||value.isEmpty){
+                    return('Confirm password not entered');
                   }
                   return null;
                 },
