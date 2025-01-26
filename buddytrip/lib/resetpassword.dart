@@ -1,5 +1,5 @@
+import 'package:buddytrip/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Resetpassword extends StatefulWidget {
@@ -109,8 +109,17 @@ class _ResetpasswordState extends State<Resetpassword> {
               SizedBox(height: 30,),
               Center(
                 child: ElevatedButton(
-                  onPressed: null
-                , child: Text('Reset Password'),),
+                  onPressed: ()async{
+                    if(formKey.currentState!.validate()){
+                      String email=emailController.text.trim();
+                      String password=passwordController.text.trim();
+                      await updateCredentials(context, email, password);
+                      emailController.clear();
+                      passwordController.clear();
+                      confirmPasswordController.clear();
+                    }
+                  },
+                 child: Text('Reset Password'),),
               ),
 
             ],
@@ -124,7 +133,7 @@ class _ResetpasswordState extends State<Resetpassword> {
   }
 }
 //update the credentials in the database
-Future<bool> updateCredentials(BuildContext context, String email, String password)async{
+Future<void> updateCredentials(BuildContext context, String email, String password)async{
   try{
     final CollectionReference users= FirebaseFirestore.instance.collection('Users');
     final QuerySnapshot querySnapshot= await users.where('email',isEqualTo:email).get();
@@ -132,9 +141,8 @@ Future<bool> updateCredentials(BuildContext context, String email, String passwo
     {
       //if email address doen not exist
       ScaffoldMessenger.of(context)..showSnackBar(
-        SnackBar(content: Text('Email address doen not exist'))
+        SnackBar(content: Text('Email address does not exist'))
       );
-      return false;
     }
     else{
       //update password
@@ -143,12 +151,12 @@ Future<bool> updateCredentials(BuildContext context, String email, String passwo
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Password changed succeffully!')),
       );
-      return true;
+      Navigator.push(context, 
+      MaterialPageRoute(builder: (context)=>Login()));
     }
   }
   catch(e){
     print('Error updating the credentials $e');
-    return false;
   }
 
 }
