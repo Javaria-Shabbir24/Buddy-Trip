@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Resetpassword extends StatefulWidget {
@@ -98,12 +100,18 @@ class _ResetpasswordState extends State<Resetpassword> {
                   if(value==null||value.isEmpty){
                     return('Confirm password not entered');
                   }
+                  else if(value!=passwordController.text){
+                    return 'Password fields do not match';
+                  }
                   return null;
                 },
-
               ),
-        
-
+              SizedBox(height: 30,),
+              Center(
+                child: ElevatedButton(
+                  onPressed: null
+                , child: Text('Reset Password'),),
+              ),
 
             ],
           ),
@@ -114,4 +122,33 @@ class _ResetpasswordState extends State<Resetpassword> {
       ),
     );
   }
+}
+//update the credentials in the database
+Future<bool> updateCredentials(BuildContext context, String email, String password)async{
+  try{
+    final CollectionReference users= FirebaseFirestore.instance.collection('Users');
+    final QuerySnapshot querySnapshot= await users.where('email',isEqualTo:email).get();
+    if(querySnapshot.docs.isEmpty)
+    {
+      //if email address doen not exist
+      ScaffoldMessenger.of(context)..showSnackBar(
+        SnackBar(content: Text('Email address doen not exist'))
+      );
+      return false;
+    }
+    else{
+      //update password
+      final String documentid= querySnapshot.docs.first.id;
+      await users.doc(documentid).update({'password':password});
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Password changed succeffully!')),
+      );
+      return true;
+    }
+  }
+  catch(e){
+    print('Error updating the credentials $e');
+    return false;
+  }
+
 }
