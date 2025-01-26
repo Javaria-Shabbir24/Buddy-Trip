@@ -99,12 +99,19 @@ class _HomepageState extends State<Homepage> {
             
             ),
             SizedBox(height: 20,),
-            SizedBox( height: 150,
+            SizedBox( height: 180,
             child: PageView(
-              
               children: [
-                createPlaceCard('Swat', 'assets/Swat.jpg'),
-                createPlaceCard('Kashmir', 'assets/Kashmir.jpg'),
+                Padding(padding: EdgeInsets.only(left: 40,right: 40),
+                child: createPlaceCard('London', 'assets/London.jpg'),),
+                Padding(padding: EdgeInsets.only(left: 40,right: 40),
+                child: createPlaceCard('Paris', 'assets/paris.jpg'),),
+                Padding(padding: EdgeInsets.only(left: 40,right: 40),
+                child: createPlaceCard('Turkey', 'assets/turkey.jpg'),),
+                Padding(padding: EdgeInsets.only(left: 40,right: 40),
+                child: createPlaceCard('Swat', 'assets/Swat.jpg'),),
+                Padding(padding: EdgeInsets.only(left: 40,right: 40),
+                child: createPlaceCard('Kashmir', 'assets/Kashmir.jpg'),),
               ],
             ),)
           ],
@@ -121,16 +128,20 @@ Widget createPlaceCard(String name, String path){
   return Container(
     padding: EdgeInsets.all(20),
     decoration: BoxDecoration(
-      border: Border.all(color: Colors.black),
+      border: Border.all(color: const Color.fromARGB(255, 141, 123, 123),width: 5),
       borderRadius: BorderRadius.circular(20),
-      
-      image: DecorationImage(image: AssetImage(path)),
+      image: DecorationImage(image: AssetImage(path),
+      fit: BoxFit.cover),
     ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+    child: Stack(
       children: [
-        Text(name,
-        style: TextStyle(color: Colors.white,fontSize: 24),
+        Positioned(
+          bottom:1,
+          right: 5,
+          child: Text(name,
+        style: TextStyle(color: const Color.fromARGB(255, 226, 209, 209),
+        fontSize: 28
+        ),),
         ),
       ],
     ),
