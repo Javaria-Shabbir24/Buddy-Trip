@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Resetpassword extends StatelessWidget {
+class Resetpassword extends StatefulWidget {
   const Resetpassword({super.key});
 
+  @override
+  State<Resetpassword> createState() => _ResetpasswordState();
+}
+
+class _ResetpasswordState extends State<Resetpassword> {
+  final emailController=TextEditingController();
+  final passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +44,10 @@ class Resetpassword extends StatelessWidget {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),),
+              TextFormField(
+                
+                
+              )
 
             ],
           ),
