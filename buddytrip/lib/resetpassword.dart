@@ -33,7 +33,7 @@ class _ResetpasswordState extends State<Resetpassword> {
             color: Color(0xFF3C3B3E),
           ),),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 40,),
           Padding(padding: EdgeInsets.all(20),
           child: Form(
             key: formKey,
@@ -42,7 +42,7 @@ class _ResetpasswordState extends State<Resetpassword> {
             children: [
               Text('Email:',
               style: TextStyle(
-                fontSize: 40,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),),
               SizedBox(height: 20,),
@@ -54,13 +54,34 @@ class _ResetpasswordState extends State<Resetpassword> {
                 ),
                 validator: (value){
                   if(value== null ||value.isEmpty){
-                    return 'usrename not entered';
+                    return 'email address not entered';
                   }
                   return null;
                 },
-                
-                
-              )
+              ),
+              SizedBox(height: 20,),
+              Text('Password:',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),),
+              SizedBox(height: 20,),
+              TextFormField(
+                controller: passwordController,
+                decoration: InputDecoration(
+                  hintText: 'Enter your new password',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value){
+                  if(value==null||value.isEmpty){
+                    return('Password not entered');
+                  }
+                  return null;
+                },
+
+              ),
+        
+
 
             ],
           ),
