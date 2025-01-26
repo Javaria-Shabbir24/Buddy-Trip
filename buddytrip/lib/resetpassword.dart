@@ -8,6 +8,7 @@ class Resetpassword extends StatefulWidget {
 }
 
 class _ResetpasswordState extends State<Resetpassword> {
+  final formKey= GlobalKey<FormState>();
   final emailController=TextEditingController();
   final passwordController=TextEditingController();
   @override
