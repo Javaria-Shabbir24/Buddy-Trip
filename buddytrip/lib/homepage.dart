@@ -1,3 +1,4 @@
+
 import 'package:buddytrip/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
 
@@ -75,23 +76,63 @@ class _HomepageState extends State<Homepage> {
                       ),
                       SizedBox(width: 4,),
                       Icon(Icons.mic, color: Colors.white,),
-                        
                       ],),
-
-                      
                       SizedBox(height: 20,),
-                    ],
                     
+                    ],
                   ),
+                  
+            
+                ),
 
-                )
               ],
             ),),
+            SizedBox(height: 20,),
+            Padding(padding: EdgeInsets.only(left: 20,right: 20,bottom: 10),
+            child: 
+            Text('Mostly Visited Places',
+            style: TextStyle(
+              fontFamily: 'IrishGrover',
+              fontSize: 26,
+              color: Colors.black
+            ),),
+            
+            ),
+            SizedBox(height: 20,),
+            SizedBox( height: 150,
+            child: PageView(
+              
+              children: [
+                createPlaceCard('Swat', 'assets/Swat.jpg'),
+                createPlaceCard('Kashmir', 'assets/Kashmir.jpg'),
+              ],
+            ),)
           ],
         ),
+
       ),
       bottomNavigationBar: Bottomnavigationbar(),
 
     );
   }
+}
+
+Widget createPlaceCard(String name, String path){
+  return Container(
+    padding: EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.black),
+      borderRadius: BorderRadius.circular(20),
+      
+      image: DecorationImage(image: AssetImage(path)),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(name,
+        style: TextStyle(color: Colors.white,fontSize: 24),
+        ),
+      ],
+    ),
+  );
 }
