@@ -1,5 +1,6 @@
 
 import 'package:buddytrip/bottomnavigationbar.dart';
+import 'package:buddytrip/placesDetails.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -103,15 +104,15 @@ class _HomepageState extends State<Homepage> {
             child: PageView(
               children: [
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard('London', 'assets/London.jpg'),),
+                child: createPlaceCard(context,'London', 'assets/London.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard('Paris', 'assets/paris.jpg'),),
+                child: createPlaceCard(context,'Paris', 'assets/paris.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard('Turkey', 'assets/turkey.jpg'),),
+                child: createPlaceCard(context,'Turkey', 'assets/turkey.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard('Swat', 'assets/Swat.jpg'),),
+                child: createPlaceCard(context,'Swat', 'assets/Swat.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard('Kashmir', 'assets/Kashmir.jpg'),),
+                child: createPlaceCard(context,'Kashmir', 'assets/Kashmir.jpg'),),
               ],
             ),),
             Padding(padding: EdgeInsets.only(top: 40, left: 20,right: 20,bottom: 20),
@@ -247,8 +248,14 @@ class _HomepageState extends State<Homepage> {
   }
 }
 
-Widget createPlaceCard(String name, String path){
-  return Container(
+Widget createPlaceCard(BuildContext context, String name, String path){
+  return GestureDetector(
+    onTap: () => {
+      Navigator.push(context, 
+      MaterialPageRoute(builder: (context)=>Placesdetails(name1: name, path: path)))
+    },
+    child: Container(
+  
     padding: EdgeInsets.all(20),
     decoration: BoxDecoration(
       border: Border.all(color: const Color.fromARGB(255, 175, 118, 118),width: 5),
@@ -262,6 +269,7 @@ Widget createPlaceCard(String name, String path){
           bottom:1,
           right: 2,
           child: Container(
+            
             padding: EdgeInsets.all(5),
             decoration: 
             BoxDecoration(
@@ -274,10 +282,10 @@ Widget createPlaceCard(String name, String path){
         fontSize: 15,
         fontFamily: 'IrishGrover'
         ),),
-          )
+          ),
           
         ),
       ],
     ),
-  );
+  ));
 }
