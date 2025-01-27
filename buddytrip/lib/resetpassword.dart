@@ -7,6 +7,8 @@ class Resetpassword extends StatefulWidget {
 
   @override
   State<Resetpassword> createState() => _ResetpasswordState();
+  
+
 }
 
 class _ResetpasswordState extends State<Resetpassword> {
@@ -14,6 +16,12 @@ class _ResetpasswordState extends State<Resetpassword> {
   final emailController=TextEditingController();
   final passwordController=TextEditingController();
   final confirmPasswordController=TextEditingController();
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
