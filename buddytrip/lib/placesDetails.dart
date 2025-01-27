@@ -1,5 +1,7 @@
 import 'package:buddytrip/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';// for decoding the json response
+import 'package:http/http.dart' as http;
 
 class Placesdetails extends StatefulWidget {
   final String name1;
@@ -13,6 +15,7 @@ class Placesdetails extends StatefulWidget {
 class _PlacesdetailsState extends State<Placesdetails> {
   late String name;
   late String path;
+  final String description='';
   @override
   void initState(){
     super.initState();
@@ -46,7 +49,13 @@ class _PlacesdetailsState extends State<Placesdetails> {
                       color: Colors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                    ),),//the name of the location
+                    ),
+                    ),//the name of the location
+                    SizedBox(height: 20,),
+                    Text(description,
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),),
                   ],
                 ),
 
