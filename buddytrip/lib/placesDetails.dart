@@ -15,12 +15,42 @@ class Placesdetails extends StatefulWidget {
 class _PlacesdetailsState extends State<Placesdetails> {
   late String name;
   late String path;
-  final String description='';
+  String description='Loading description...';
   @override
   void initState(){
     super.initState();
     name=widget.name1;
     path=widget.path;
+    fetchDescription(name);
+    
+  }
+  //method to fetch the description of the city
+  Future<void> fetchDescription (String cityName)async{
+  try{
+    //url to fetch data using wikipedia api
+    final url=Uri.parse('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&titles=$cityName&format=json',);
+    //recording the response
+    final response= await http.get(url);
+    //if response is received
+    if(response.statusCode==200){
+      final data=json.decode(response.body);
+      final pages=data['query']['pages'];
+      final page=pages.values.first;
+      setState(() {
+        description= page['extract'] ?? 'No description available';
+      }); 
+    }
+    else{
+      setState(() {
+        description='unable to get data';
+      }); 
+    }
+  }
+  catch(e){
+    setState(() {
+        description='unable to get data';
+      }); 
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -52,7 +82,10 @@ class _PlacesdetailsState extends State<Placesdetails> {
                     ),
                     ),//the name of the location
                     SizedBox(height: 20,),
+                    
                     Text(description,
+                    maxLines: 10,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
                     ),),
