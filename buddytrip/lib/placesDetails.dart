@@ -68,6 +68,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                 width: 300,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 194, 187, 201),
                   border: Border.all(color: Colors.black, width: 3),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -92,7 +93,9 @@ class _PlacesdetailsState extends State<Placesdetails> {
                   ],
                 ),
 
-              )
+              ),
+              SizedBox(height: 20,),
+              
             ],
 
           ),

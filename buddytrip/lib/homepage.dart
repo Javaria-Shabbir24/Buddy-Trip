@@ -110,7 +110,7 @@ class _HomepageState extends State<Homepage> {
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
                 child: createPlaceCard(context,'Turkey', 'assets/turkey.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
-                child: createPlaceCard(context,'Swat', 'assets/Swat.jpg'),),
+                child: createPlaceCard(context,'Mecca', 'assets/makkah.jpg'),),
                 Padding(padding: EdgeInsets.only(left: 40,right: 40),
                 child: createPlaceCard(context,'Kashmir', 'assets/Kashmir.jpg'),),
               ],
