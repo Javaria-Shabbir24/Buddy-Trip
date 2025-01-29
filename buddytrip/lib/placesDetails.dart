@@ -2,6 +2,7 @@ import 'package:buddytrip/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';// for decoding the json response
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class Placesdetails extends StatefulWidget {
   final String name1;
@@ -16,6 +17,17 @@ class _PlacesdetailsState extends State<Placesdetails> {
   late String name;
   late String path;
   String description='Loading description...';
+  String weatherdescription="Loading weather forecast...";
+  String mainTemprature="";
+  String feelsLike="";
+  String lat="";
+  String lon="";
+  String tempMin="";
+  String tempMax="";
+  String windSpeed="";
+  String windDirection="";
+  String sunrise="";
+  String sunset="";
   @override
   void initState(){
     super.initState();
@@ -62,8 +74,14 @@ class _PlacesdetailsState extends State<Placesdetails> {
       final apiKey="2c3f148712f893070a2a97301baa1655";
       // sending api request
       final url=Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric',);
+      final weatherResponse=await http.get(url);
+      if(weatherResponse.statusCode==200){
 
+      }
+      else{
+        
 
+      }
     }
     catch(e){
       //catching the exception
