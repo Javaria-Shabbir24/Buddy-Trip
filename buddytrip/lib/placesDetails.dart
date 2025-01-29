@@ -21,8 +21,10 @@ class _PlacesdetailsState extends State<Placesdetails> {
     super.initState();
     name=widget.name1;
     path=widget.path;
+    //call method for city description 
     fetchDescription(name);
-    
+    //call method for weather details
+    getWeatherDetails(name);
   }
   //method to fetch the description of the city
   Future<void> fetchDescription (String cityName)async{
@@ -31,6 +33,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
     final url=Uri.parse('https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&titles=$cityName&format=json',);
     //recording the response
     final response= await http.get(url);
+
     //if response is received
     if(response.statusCode==200){
       final data=json.decode(response.body);
@@ -48,10 +51,27 @@ class _PlacesdetailsState extends State<Placesdetails> {
   }
   catch(e){
     setState(() {
-        description='unable to get data';
+        description='Exception: $e ';
       }); 
     }
   }
+  //method to get current weather forecast
+  Future<void> getWeatherDetails(String cityName)async{
+    try{
+      // open weather map api key
+      final apiKey="2c3f148712f893070a2a97301baa1655";
+      // sending api request
+      final url=Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric',);
+
+
+    }
+    catch(e){
+      //catching the exception
+      print('Exception $e');
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.white,
@@ -85,7 +105,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                     SizedBox(height: 20,),
                     
                     Text(description,
-                    maxLines: 10,
+                    maxLines: 7,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
@@ -95,6 +115,33 @@ class _PlacesdetailsState extends State<Placesdetails> {
 
               ),
               SizedBox(height: 20,),
+              //weather container
+              Container(
+                width: 300,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black,width: 3),
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Current Weather Forecast',
+                        style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 20
+                        ),)
+
+                      ],
+                    ),
+                    //next part here
+
+                  ],
+                ),
+              ),
               
             ],
 
