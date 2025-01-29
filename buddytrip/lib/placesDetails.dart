@@ -1,4 +1,5 @@
 import 'package:buddytrip/bottomnavigationbar.dart';
+import 'package:buddytrip/placeDescriptionPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';// for decoding the json response
 import 'package:http/http.dart' as http;
@@ -20,10 +21,6 @@ class _PlacesdetailsState extends State<Placesdetails> {
   String weatherdescription="Loading weather forecast...";
   String mainTemperature="";
   String visibility="";
-  String lat="";
-  String lon="";
-  String tempMin="";
-  String tempMax="";
   String windSpeed="";
   String windDirection="";
   String sunrise="";
@@ -82,14 +79,10 @@ class _PlacesdetailsState extends State<Placesdetails> {
           String iconCode=data['weather'][0]['icon'];
           iconUrl= "http://openweathermap.org/img/wn/$iconCode.png";// getting the image associated with the weather
           weatherdescription=data['weather'][0]['description'];
-          mainTemperature = "${data['main']['temp']}°C";
-          tempMin = "${data['main']['temp_min']}°C";
-          tempMax = "${data['main']['temp_max']}°C";
+          mainTemperature = "${(data['main']['temp']).toInt()}°C";
           windSpeed = "${data['wind']['speed']} m/s";
           windDirection = "${data['wind']['deg']}°";
           visibility = "${data['visibility']} meters";
-          lat = data['coord']['lat'].toString();
-          lon = data['coord']['lon'].toString();
           sunrise = formatTime(data['sys']['sunrise']);
           sunset = formatTime(data['sys']['sunset']);
         });
@@ -136,18 +129,53 @@ class _PlacesdetailsState extends State<Placesdetails> {
                     Text(name,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'IrishGrover'
                     ),
                     ),//the name of the location
-                    SizedBox(height: 20,),
-                    
+                    SizedBox(height: 10,),
                     Text(description,
-                    maxLines: 7,
+                    maxLines: 5,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 15,
                     ),),
+                    SizedBox(height: 10,),
+                    //button to open detailed description
+                    Container(
+                      width: 130,
+                      height: 30,
+                      child: FloatingActionButton(
+                      onPressed: (){
+                        Navigator.push(context, 
+                        MaterialPageRoute(builder: (context)=>Placedescriptionpage(description=description))
+                        );
+                      }  ,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(width: 10,),
+                          Text('Read More',
+                          style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 15,
+                          color: Colors.black),
+                          ),
+                          SizedBox(width: 10,),
+                          Icon(Icons.arrow_forward, color: Colors.black, size: 18),
+                        ],
+                      ),
+                    backgroundColor: Color.fromARGB(255, 235, 234, 234),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(
+                        color: Colors.black,
+                        width: 1,
+                      ),
+                    ),
+                    ),
+                    ),
                   ],
                 ),
 
@@ -175,39 +203,9 @@ class _PlacesdetailsState extends State<Placesdetails> {
                       ],
                     ),
                     SizedBox(height: 10,),
-                    //
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(weatherdescription+mainTemperature+""+"\n"+visibility+""+lat+""+lon+"\n" +tempMax+""+tempMin+""+windSpeed+"\n"+windDirection+""+sunrise+""+sunset,
-                        style: TextStyle(
-                          fontSize: 12
-                        ),
-                        ),
-                        
-                        
-                      ],
-                    ),
-                    //next part here
-                    Container(
-                       child:  Image.network(iconUrl)
-                      
-                    ),
-                    //
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(mainTemperature,
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),)
-                          ],
-                        ),
-                        SizedBox(width: 20,),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -219,11 +217,53 @@ class _PlacesdetailsState extends State<Placesdetails> {
                               fit: BoxFit.cover,),
                             ),
                           ],
-                        )
-
+                        ),
+                        
+                        SizedBox(width: 70,),
+                        
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(mainTemperature,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                            SizedBox(height: 5,),
+                            Text(weatherdescription,
+                            style: TextStyle(
+                              fontSize: 14
+                            ),),
+                          ],
+                        ),
                       ],
-                      
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                              Text('Visibility upto $visibility',
+                              style: TextStyle(fontSize: 12),),
+                              SizedBox(height: 10,),
+                              Text('Wind Speed is $windSpeed at $windDirection ',
+                              style: TextStyle(fontSize: 12),),
+                              SizedBox(height: 10,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                    Text('Sunrise at $sunrise',
+                                    style: TextStyle(fontSize: 12),),
+                                    SizedBox(width: 30,),
+                                    Text('Sunset at $sunset',
+                                    style: TextStyle(fontSize: 12),),
+                                ],
 
+                              )
+                            ],
+                        ),
+                      ],
                     )
 
                   ],
