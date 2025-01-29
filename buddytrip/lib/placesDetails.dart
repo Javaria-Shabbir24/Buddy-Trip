@@ -18,8 +18,8 @@ class _PlacesdetailsState extends State<Placesdetails> {
   late String path;
   String description='Loading description...';
   String weatherdescription="Loading weather forecast...";
-  String mainTemprature="";
-  String feelsLike="";
+  String mainTemperature="";
+  String visibility="";
   String lat="";
   String lon="";
   String tempMin="";
@@ -28,6 +28,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
   String windDirection="";
   String sunrise="";
   String sunset="";
+  String iconUrl="";
   @override
   void initState(){
     super.initState();
@@ -76,19 +77,38 @@ class _PlacesdetailsState extends State<Placesdetails> {
       final url=Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$apiKey&units=metric',);
       final weatherResponse=await http.get(url);
       if(weatherResponse.statusCode==200){
-
+        final data=json.decode(weatherResponse.body);
+        setState(() {
+          String iconCode=data['weather'][0]['icon'];
+          iconUrl= "http://openweathermap.org/img/wn/$iconCode.png";// getting the image associated with the weather
+          weatherdescription=data['weather'][0]['description'];
+          mainTemperature = "${data['main']['temp']}°C";
+          tempMin = "${data['main']['temp_min']}°C";
+          tempMax = "${data['main']['temp_max']}°C";
+          windSpeed = "${data['wind']['speed']} m/s";
+          windDirection = "${data['wind']['deg']}°";
+          visibility = "${data['visibility']} meters";
+          lat = data['coord']['lat'].toString();
+          lon = data['coord']['lon'].toString();
+          sunrise = formatTime(data['sys']['sunrise']);
+          sunset = formatTime(data['sys']['sunset']);
+        });
       }
       else{
-        
-
+        weatherdescription='error fetching the weather details';
       }
     }
     catch(e){
       //catching the exception
-      print('Exception $e');
+      weatherdescription='error fetching the weather details $e';
     }
   }
+  //method to convert date time to readable format
+  String formatTime(int timestamp){
+    DateTime date=DateTime.fromMillisecondsSinceEpoch(timestamp*1000);
+    return DateFormat('hh:mm a').format(date);
 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +126,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                 width: 300,
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 194, 187, 201),
+                  color: Color.fromARGB(255, 226, 222, 230),
                   border: Border.all(color: Colors.black, width: 3),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -151,11 +171,60 @@ class _PlacesdetailsState extends State<Placesdetails> {
                         style: TextStyle(
                           fontFamily: 'IrishGrover',
                           fontSize: 20
-                        ),)
-
+                        ),),
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    //
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(weatherdescription+mainTemperature+""+"\n"+visibility+""+lat+""+lon+"\n" +tempMax+""+tempMin+""+windSpeed+"\n"+windDirection+""+sunrise+""+sunset,
+                        style: TextStyle(
+                          fontSize: 12
+                        ),
+                        ),
+                        
+                        
                       ],
                     ),
                     //next part here
+                    Container(
+                       child:  Image.network(iconUrl)
+                      
+                    ),
+                    //
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(mainTemperature,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),)
+                          ],
+                        ),
+                        SizedBox(width: 20,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            //image
+                            SizedBox(
+                              height: 80,
+                              width: 80,
+                              child: Image.network(iconUrl,
+                              fit: BoxFit.cover,),
+                            ),
+                          ],
+                        )
+
+                      ],
+                      
+
+                    )
 
                   ],
                 ),
