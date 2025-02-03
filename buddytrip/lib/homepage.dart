@@ -1,6 +1,7 @@
-
 import 'package:buddytrip/bottomnavigationbar.dart';
+import 'package:buddytrip/newTrip.dart';
 import 'package:buddytrip/placesDetails.dart';
+import 'package:buddytrip/popularActivities.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -160,7 +161,14 @@ class _HomepageState extends State<Homepage> {
                           ), 
                           softWrap: true,),
                           SizedBox(width: 4,),
-                          Icon(Icons.arrow_forward),
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.push(context, 
+                              MaterialPageRoute(builder: (context)=>Newtrip()))
+                            },
+                            child: Icon(Icons.arrow_forward),
+                          ),
+                          
                             ],
                           )
                           
@@ -194,7 +202,13 @@ class _HomepageState extends State<Homepage> {
                             fontSize: 10
                           ),),
                           SizedBox(width: 4,),
-                          Icon(Icons.arrow_forward),
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.push(context, 
+                              MaterialPageRoute(builder: (context)=>Popularactivities()))
+                            },
+                            child: Icon(Icons.arrow_forward),
+                          ),
                             ],
                           )
                           
