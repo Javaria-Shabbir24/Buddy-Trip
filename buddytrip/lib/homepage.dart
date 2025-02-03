@@ -59,7 +59,7 @@ class _HomepageState extends State<Homepage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: TextField(
+                            child: TextFormField(
                               controller: searchbarController,
                             decoration: InputDecoration(
                           filled: true,
@@ -72,12 +72,18 @@ class _HomepageState extends State<Homepage> {
                           hintText: 'where do you want to go?  ',
                           hintStyle: TextStyle(color:Colors.grey),
                           prefixIcon: Icon(Icons.search, color: Colors.black,),
+                          
                         ),
+                        onFieldSubmitted: (value) => {
+                          if(value.isNotEmpty){
+                            Navigator.push(context, 
+                            MaterialPageRoute(builder: (context)=>Placesdetails(name1: value, path: ''))),
+                            searchbarController.clear(),
+                          }
+                        },
                       ),
+                      ),],
                       ),
-                      SizedBox(width: 4,),
-                      Icon(Icons.mic, color: Colors.white,),
-                      ],),
                       SizedBox(height: 20,),
                     
                     ],

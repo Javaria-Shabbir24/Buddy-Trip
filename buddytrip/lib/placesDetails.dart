@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:buddytrip/bottomnavigationbar.dart';
 import 'package:buddytrip/placeDescriptionPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';// for decoding the json response
 import 'package:http/http.dart' as http;
@@ -15,6 +18,9 @@ class Placesdetails extends StatefulWidget {
 }
 
 class _PlacesdetailsState extends State<Placesdetails> {
+  List<String> imageUrls=[];
+  int currentIndex=0;
+  Timer? _timer;
   late String name;
   late String path;
   String description='Loading description...';
@@ -35,6 +41,42 @@ class _PlacesdetailsState extends State<Placesdetails> {
     fetchDescription(name);
     //call method for weather details
     getWeatherDetails(name);
+    //call method for popular spots
+    fetchPopularSpots(name);
+  }
+  //method for auto scroll
+  void autoScroll(){
+    if(imageUrls.isEmpty){
+        _timer?.cancel();
+      return;
+    }
+    _timer=Timer.periodic(Duration(seconds: 3), (timer){
+      setState(() {
+        currentIndex=(currentIndex+1)%imageUrls.length;
+        print(imageUrls[currentIndex]);
+      });
+    });
+  }
+  //method to fetch popular spots
+  Future<void> fetchPopularSpots(String cityName)async{
+    try{
+      QuerySnapshot snapshot=await FirebaseFirestore.instance.collection('Places').where('Name',isEqualTo: cityName).get();
+      List<String> urls=[];
+      for(var document in snapshot.docs){
+        Map<String,dynamic> data=document.data() as Map<String,dynamic>;
+        urls.add(data['Place1']);
+        urls.add(data['Place2']);
+        urls.add(data['Place3']);
+      }
+      setState(() {
+        imageUrls=urls;
+      });
+      autoScroll();
+    }
+    catch(e){
+      print('Error fetching the images $e');
+    }
+
   }
   //method to fetch the description of the city
   Future<void> fetchDescription (String cityName)async{
@@ -134,6 +176,15 @@ class _PlacesdetailsState extends State<Placesdetails> {
                       fontFamily: 'IrishGrover'
                     ),
                     ),//the name of the location
+                    SizedBox(height: 10,),
+                    //popular spots
+                    Container(
+                      width: 300,
+                      height: 150,
+                      padding: EdgeInsets.all(5),
+                      child: Image.network(imageUrls[currentIndex],
+                      fit: BoxFit.cover,),
+                    ),
                     SizedBox(height: 10,),
                     Text(description,
                     maxLines: 5,
@@ -269,6 +320,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                   ],
                 ),
               ),
+              SizedBox(height: 10,),
               
             ],
 

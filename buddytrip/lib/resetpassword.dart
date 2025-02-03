@@ -79,6 +79,7 @@ class _ResetpasswordState extends State<Resetpassword> {
               SizedBox(height: 20,),
               TextFormField(
                 controller: passwordController,
+                obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Enter your new password',
                   border: OutlineInputBorder(),
@@ -99,6 +100,7 @@ class _ResetpasswordState extends State<Resetpassword> {
               ),),
               SizedBox(height: 20,),
               TextFormField(
+                obscureText: true,
                 controller: confirmPasswordController,
                 decoration: InputDecoration(
                   hintText: 'Confirm your new password',
