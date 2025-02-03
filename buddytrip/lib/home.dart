@@ -1,5 +1,4 @@
 import 'package:buddytrip/signup.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
