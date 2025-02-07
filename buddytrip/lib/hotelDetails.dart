@@ -1,4 +1,5 @@
 import 'package:buddytrip/bottomnavigationbar.dart';
+import 'package:buddytrip/roomReservation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,16 +14,21 @@ class Hoteldetails extends StatefulWidget {
 }
 
 class _HoteldetailsState extends State<Hoteldetails> {
-  
   int deluxeCounter=0;
   int standardCounter=0;
   int suiteCounter=0;
   double deluxeRoomPrice=150;
   double standardRoomPrice=80;
   double suiteRoomPrice=300;
+  double priceStandard=0;
+  double pricedeluxe=0;
+  double pricesuite=0;
+  double total=0;
+  
   //function to calculate expenditure
   double calculateExpenditure(){
     return (deluxeCounter*deluxeRoomPrice)+(standardCounter*standardRoomPrice)+(suiteCounter*suiteRoomPrice);
+    
   }
   //function to book rooms
   Future<void> bookRooms()async{
@@ -43,6 +49,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
               }
             ],
             'roomsExpenditure':calculateExpenditure(),
+            
             //clear the fields
             
             });
@@ -119,7 +126,9 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 if(standardCounter>0){
-                                standardCounter--;}
+                                standardCounter--;
+                                priceStandard=standardRoomPrice*standardCounter;
+                                total=calculateExpenditure();}
                               });
                               
                             },
@@ -134,6 +143,8 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 standardCounter++;
+                                priceStandard=standardRoomPrice*standardCounter;
+                                total=calculateExpenditure();
                               });
                               
                             },
@@ -173,7 +184,9 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 if(deluxeCounter>0){
-                                deluxeCounter--;}
+                                deluxeCounter--;
+                                pricedeluxe=deluxeRoomPrice*deluxeCounter;
+                                total=calculateExpenditure();}
                               });
                               
                             },
@@ -188,6 +201,8 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 deluxeCounter++;
+                                pricedeluxe=deluxeRoomPrice*deluxeCounter;
+                                total=calculateExpenditure();
                               });
                               
                             },
@@ -227,7 +242,9 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 if(suiteCounter>0){
-                                suiteCounter--;}
+                                suiteCounter--;
+                                pricesuite=suiteRoomPrice*suiteCounter;
+                                total=calculateExpenditure();}
                               });
                               
                             },
@@ -242,6 +259,8 @@ class _HoteldetailsState extends State<Hoteldetails> {
                             onTap: ()  {
                               setState(() {
                                 suiteCounter++;
+                                pricesuite=suiteRoomPrice*suiteCounter;
+                                total=calculateExpenditure();
                               });
                               
                             },
@@ -258,8 +277,9 @@ class _HoteldetailsState extends State<Hoteldetails> {
                 FloatingActionButton(onPressed:(){
                   showDialog(context: context, builder: (BuildContext context){
                     return Dialog(
+                      
                       child: Container(
-                        height: 150,
+                        height: 320,
                         width: 40,
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
@@ -271,9 +291,18 @@ class _HoteldetailsState extends State<Hoteldetails> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text('Are you sure?',
+                            
+                            Text('Are you sure you want \n  to book the rooms?',
                             style: TextStyle(fontSize: 20,
                             ),),
+                            SizedBox(height: 20,),
+                            Text('$standardCounter Standard Rooms Booked \($priceStandard\$)'),
+                            SizedBox(height: 10,),
+                            Text('$deluxeCounter Deluxe Rooms Booked \($pricedeluxe\$)'),
+                            SizedBox(height: 10,),
+                            Text('$suiteCounter Suite Rooms Booked \($pricesuite\$)'),
+                            SizedBox(height: 10,),
+                            Text('Total price \($total\$) '),
                             SizedBox(height: 25,),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -286,6 +315,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
                                 ElevatedButton(onPressed: (){
                                   bookRooms();
                                   
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Roomreservation()));
                                 }, child: Text('Yes'),), 
                               ],
                             )

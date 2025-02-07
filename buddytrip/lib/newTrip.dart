@@ -130,7 +130,8 @@ class _NewtripState extends State<Newtrip> {
                     Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color.fromARGB(255, 192, 132, 132),width: 3)
+                        border: Border.all(color: const Color.fromARGB(255, 192, 132, 132),width: 2),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -149,9 +150,7 @@ class _NewtripState extends State<Newtrip> {
                            setState(() {
                             selectedPlace=newvalue ?? 'London';
                             updateDates(dates[startDateIndex!], dates[endDateIndex!], selectedPlace);
-                            if(selectedPlace!=null){
-                              Loadhotels();
-                            }
+                            Loadhotels();
                           });},
                           )
                         ],
