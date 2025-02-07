@@ -15,7 +15,7 @@ class _NewtripState extends State<Newtrip> {
   List<Map<String, dynamic>> hotels=[];
   int? startDateIndex=0;
   int? endDateIndex=0;
-  String? selectedPlace;
+  String selectedPlace='London';
   List<String>places=['London','Turkey','Paris','Mecca','Thailand'];
 
   @override
@@ -147,9 +147,11 @@ class _NewtripState extends State<Newtrip> {
                            }).toList(),
                            onChanged: (String? newvalue){
                            setState(() {
-                            selectedPlace=newvalue;
+                            selectedPlace=newvalue ?? 'London';
                             updateDates(dates[startDateIndex!], dates[endDateIndex!], selectedPlace);
-                            Loadhotels();
+                            if(selectedPlace!=null){
+                              Loadhotels();
+                            }
                           });},
                           )
                         ],
@@ -173,7 +175,7 @@ class _NewtripState extends State<Newtrip> {
                             final hotelMap = hotels[index];
                             return Row(
                               children: hotelMap.entries.map((entry) {
-                                return createHotelCard(context, entry.key, entry.value);
+                                return createHotelCard(context, entry.key, entry.value,selectedPlace);
                               }).toList(),
                             );
                           },
@@ -210,12 +212,12 @@ Future<void> updateDates(DateTime? startDate, DateTime? endDate, String? selecte
   }
 }
 // function to create hotel card
-Widget createHotelCard(BuildContext context , String name, String imageUrl){
+Widget createHotelCard(BuildContext context , String name, String imageUrl,String selectedPlace){
   return GestureDetector(
     onTap: ()
     {
       Navigator.push(context, 
-      MaterialPageRoute(builder: (context)=>Hoteldetails(name:name, imageUrl:imageUrl)));
+      MaterialPageRoute(builder: (context)=>Hoteldetails(selectedPlace: selectedPlace,name:name, imageUrl:imageUrl)));
     },
     child: Padding(padding: EdgeInsets.all(10),
   child: Container(
