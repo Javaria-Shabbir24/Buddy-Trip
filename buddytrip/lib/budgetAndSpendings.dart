@@ -1,7 +1,7 @@
-import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class Budgetandspendings extends StatefulWidget {
   const Budgetandspendings({super.key});
@@ -18,6 +18,11 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
   double clothing=0;
   double miscellaneous=0;
   double transportation=0;
+  double hotelper=0;
+  double clothingper=0;
+  double transportationper=0;
+  double miscellaneousper=0;
+  double savingper=0;
   DateTime date= DateTime.now();
   int monthNumber=0;
   String month='';
@@ -29,6 +34,14 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
     getRoomsExpense();
     super.initState();
   }
+  //function to get percentage
+  double getPercentage(double val){
+    return (val/currentBalance)*100;
+  }
+  //function to create pie chart
+  /*Widget buildPieChart(){
+
+  }*/
   //update the next current balance
    Future<void> updateCurrentNextBudget()async{
     try{
