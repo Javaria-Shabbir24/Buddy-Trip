@@ -120,7 +120,7 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
-                border: Border.all(color: Colors.black),
+                
                 color: Colors.white
 
               ),
