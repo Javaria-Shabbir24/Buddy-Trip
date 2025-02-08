@@ -24,11 +24,35 @@ class _HoteldetailsState extends State<Hoteldetails> {
   double pricedeluxe=0;
   double pricesuite=0;
   double total=0;
-  
+  DateTime date=DateTime.now();
+  int monthnumber= 1;
+  //Function to get total
+  double getTotal(){
+    return total;
+  }
   //function to calculate expenditure
   double calculateExpenditure(){
     return (deluxeCounter*deluxeRoomPrice)+(standardCounter*standardRoomPrice)+(suiteCounter*suiteRoomPrice);
     
+  }
+  //function to update the rooms expense in budget collection
+  Future<void> updateBudget()async{
+    try{
+      setState(() {
+        monthnumber=date.month;//the value of month
+      });
+      await FirebaseFirestore.instance.collection('Budget').where('month',isEqualTo: getMonthName(monthnumber)).get().then(
+        (querysnapshot){
+          for(var doc in querysnapshot.docs){
+            doc.reference.update({'roomsExpenditure': total});
+          }
+        }
+      );
+
+    }
+    catch(e){
+      print('Error updating the rooms expense in budget collection $e');
+    }
   }
   //function to book rooms
   Future<void> bookRooms()async{
@@ -49,9 +73,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
               }
             ],
             'roomsExpenditure':calculateExpenditure(),
-            
-            //clear the fields
-            
+             
             });
           }
          }
@@ -314,6 +336,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
                                 SizedBox(width: 50,),
                                 ElevatedButton(onPressed: (){
                                   bookRooms();
+                                  updateBudget();
                                   
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Roomreservation()));
                                 }, child: Text('Yes'),), 
@@ -338,5 +361,35 @@ class _HoteldetailsState extends State<Hoteldetails> {
       ),
       bottomNavigationBar: Bottomnavigationbar(),
     );
+  }
+}
+String getMonthName(int monthNumber){
+  switch(monthNumber){
+    case 1:
+    return 'January';
+    case 2:
+    return 'February';
+    case 3:
+      return 'March';
+    case 4:
+      return 'April';
+    case 5:
+      return 'May';
+    case 6:
+      return 'June';
+    case 7:
+      return 'July';
+    case 8:
+      return 'August';
+    case 9:
+      return 'September';
+    case 10:
+      return 'October';
+    case 11:
+      return 'November';
+    case 12:
+      return 'December';
+    default:
+      return 'Invalid Month';
   }
 }

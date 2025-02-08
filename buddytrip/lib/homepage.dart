@@ -1,7 +1,7 @@
 import 'package:buddytrip/bottomnavigationbar.dart';
+import 'package:buddytrip/budgetAndSpendings.dart';
 import 'package:buddytrip/newTrip.dart';
 import 'package:buddytrip/placesDetails.dart';
-import 'package:buddytrip/popularActivities.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -126,8 +126,7 @@ class _HomepageState extends State<Homepage> {
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 4),
-                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
                 color: const Color.fromARGB(255, 175, 118, 118),
               ),
                 child: Row(
@@ -188,7 +187,7 @@ class _HomepageState extends State<Homepage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('Explore Activities',
+                          Text('Budget and Spendings',
                           style: TextStyle(
                             fontFamily: 'IrishGrover',
                             fontSize: 15
@@ -197,7 +196,7 @@ class _HomepageState extends State<Homepage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text('View popular \nactivities',
+                              Text('Handle your \nbudget at ease',
                             style: TextStyle(
                             fontSize: 10
                           ),),
@@ -205,7 +204,7 @@ class _HomepageState extends State<Homepage> {
                           GestureDetector(
                             onTap: () => {
                               Navigator.push(context, 
-                              MaterialPageRoute(builder: (context)=>Popularactivities()))
+                              MaterialPageRoute(builder: (context)=>Budgetandspendings()))
                             },
                             child: Icon(Icons.arrow_forward),
                           ),
@@ -220,44 +219,7 @@ class _HomepageState extends State<Homepage> {
                 ),
             ),),
             SizedBox(height: 20,),
-            Padding(padding: EdgeInsets.all(20),
-            child: Container(
-              height: 150,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black,width: 4),
-                borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(image: AssetImage('assets/budget.jpg'),
-                fit: BoxFit.cover),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: const Color.fromARGB(255, 175, 118, 118)),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(width: 20,),
-                      Text('Handle your \nbudget at ease',
-                      style: TextStyle(
-                        fontFamily: 'IrishGrover',
-                        fontSize: 15,
-                        color: Colors.black
-                      ),)
-                    ],
-
-                  ),
-                  )
-                  
-                ],
-              ),
-            ),)
+            
           ],
         ),
 

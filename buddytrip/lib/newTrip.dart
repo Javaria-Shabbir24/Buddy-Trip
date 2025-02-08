@@ -219,7 +219,7 @@ Widget createHotelCard(BuildContext context , String name, String imageUrl,Strin
       MaterialPageRoute(builder: (context)=>Hoteldetails(selectedPlace: selectedPlace,name:name, imageUrl:imageUrl)));
     },
     child: Padding(padding: EdgeInsets.all(10),
-  child: Container(
+    child: Container(
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
       border: Border.all(
