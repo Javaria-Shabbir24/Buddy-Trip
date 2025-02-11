@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 
 
@@ -21,6 +23,7 @@ class _ProfileState extends State<Profile> {
   bool phoneediting=false;
   bool genderediting=false;
   File? image;
+  String? _imageURL;
   //function to select image
   Future<void> pickImage() async{
     final pickedFile=await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -28,8 +31,33 @@ class _ProfileState extends State<Profile> {
       setState(() {
         image=File(pickedFile.path);
       });
+      uploadImage(File(pickedFile.path));//store in db
     }
   }
+   // Upload Image to Firebase Storage & Get URL
+   //its paid
+  Future<void> uploadImage(File imageFile) async {
+    try {
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString(); 
+      Reference storageRef = FirebaseStorage.instance.ref().child('images/$fileName.jpg');
+      UploadTask uploadTask = storageRef.putFile(imageFile);
+      TaskSnapshot snapshot = await uploadTask;
+      String downloadURL = await snapshot.ref.getDownloadURL();
+      setState(() {
+        _imageURL = downloadURL; 
+      });
+      await FirebaseFirestore.instance.collection('Users').where('username',isEqualTo: 'javeria').get().then(
+      (querysnapshot){
+        for(var doc in querysnapshot.docs){
+          doc.reference.update({'profilePicture':downloadURL});
+        }
+      });
+    }
+     catch (e) {
+      print("Error uploading image: $e");
+    }
+  }
+
   @override
   void initState() {
     setTheInitialStates();

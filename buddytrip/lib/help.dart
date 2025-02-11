@@ -5,6 +5,12 @@ class Help extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        
+      ),
+
+    );
   }
 }
