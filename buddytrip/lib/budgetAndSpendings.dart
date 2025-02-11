@@ -1,7 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 class Budgetandspendings extends StatefulWidget {
   const Budgetandspendings({super.key});
@@ -34,9 +34,22 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
     getRoomsExpense();
     super.initState();
   }
+  //function to build Pie Chart
+  Widget buildPieChart(){
+    Map<String, double> dataMap={
+      'Hotel Bookings':hotelper,
+      'Clothing': clothingper,
+      'Transportation': transportationper,
+      'Miscellaneous':miscellaneousper,
+      'Savings':savingper};
+
+  }
   //function to get percentage
   double getPercentage(double val){
-    return (val/currentBalance)*100;
+    double value=(val/currentBalance)*100;
+    String formattedValue = value.toStringAsFixed(2); 
+    double limitedValue = double.parse(formattedValue);
+    return limitedValue;
   }
   //function to create pie chart
   /*Widget buildPieChart(){
@@ -99,10 +112,15 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
               remainingBalance=currentBalance-monthlySpendings;
               //update counter
               counter++;
+              //update percentages
+              transportationper=getPercentage(transportation);
+              clothingper=getPercentage(clothing);
+              miscellaneousper=getPercentage(miscellaneous);
+              savingper=getPercentage(remainingBalance);
+              hotelper=getPercentage(roomsExpenditure);
           });
           //update net Balance
           doc.reference.update({'netBalance':remainingBalance});
-          
           if(counter==1){
             updateCurrentNextBudget();
           }
@@ -260,9 +278,21 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                           SizedBox(width: 20,),
                           Icon(Icons.hotel, color: Colors.blue,),
                           SizedBox(width: 20,),
-                          Text('Hotel Bookings'),
-                          SizedBox(width: 120,),
-                          Text('$roomsExpenditure\$',),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Hotel Bookings',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('percentage',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
+                          SizedBox(width: 105,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('$roomsExpenditure\$',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('$hotelper\%',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
                         ],
                       ),
                       Divider(color: Colors.grey,),
@@ -273,9 +303,21 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                           SizedBox(width: 20,),
                           Icon(Icons.shopping_cart, color: Colors.pink,),
                           SizedBox(width: 20,),
-                          Text('Clothing'),
-                          SizedBox(width: 164,),
-                          Text('$clothing\$',),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Clothing',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('percentage',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
+                          SizedBox(width: 140,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('$clothing\$',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('$clothingper\%',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
                         ],
                       ),
                       Divider(color: Colors.grey,),
@@ -286,9 +328,21 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                           SizedBox(width: 20,),
                           Icon(Icons.emoji_transportation, color: Colors.green,),
                           SizedBox(width: 20,),
-                          Text('Transportation'),
-                          SizedBox(width: 122,),
-                          Text('$transportation\$',),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Transportation',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('percentage',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
+                          SizedBox(width: 105,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('$transportation\$',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('$transportationper\%',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
                         ],
                       ),
                       Divider(color: Colors.grey,),
@@ -299,9 +353,21 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                           SizedBox(width: 20,),
                           Icon(Icons.other_houses, color: Colors.brown,),
                           SizedBox(width: 20,),
-                          Text('Miscellaneous'),
-                          SizedBox(width: 124,),
-                          Text('$miscellaneous\$',),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Miscellaneous',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('percentage',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
+                          SizedBox(width: 105,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('$miscellaneous\$',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('$miscellaneousper\%',style: TextStyle(fontSize: 12),),
+                            ],
+                          ),
                         ],
                       ),
                       Divider(color: Colors.grey,),
