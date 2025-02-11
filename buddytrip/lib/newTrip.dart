@@ -56,20 +56,16 @@ class _NewtripState extends State<Newtrip> {
                 color: Colors.black,
                 thickness: 1,
               ),
-              Padding(padding: EdgeInsets.all(10),
-              child: Container(
-                width: 300,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black,width: 3),
-                  borderRadius: BorderRadius.circular(10),
-                ),
+               Container(
+                width: 400,
+                padding: EdgeInsets.all(15),
+                
                 //select dates
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('TRIP DATE SELECTION',
-                    style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                    style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                     SizedBox(height: 20,),
                     Container(
                       height: 50,
@@ -128,16 +124,16 @@ class _NewtripState extends State<Newtrip> {
                     ),
                     SizedBox(height: 20,),
                     Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: const Color.fromARGB(255, 192, 132, 132),width: 2),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                      
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('Select Destination'),
-                          SizedBox(width: 10,),
+                          Text('DESTINATION',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold
+                          ),),
+                          SizedBox(width: 50,),
                           DropdownButton(
                             value: selectedPlace,
                             hint: Text('select'),
@@ -162,8 +158,9 @@ class _NewtripState extends State<Newtrip> {
                     Text('EXPLORE HOTELS',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),),
+                    SizedBox(height: 10,),
                     hotels.isNotEmpty
                     ? SizedBox(
                         height: 200, // Adjust the height based on hotel card size
@@ -185,7 +182,7 @@ class _NewtripState extends State<Newtrip> {
                   ],
                 ),
               ),
-              )
+              
               
             ],
           ),

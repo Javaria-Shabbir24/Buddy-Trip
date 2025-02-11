@@ -24,14 +24,14 @@ class _PlacesdetailsState extends State<Placesdetails> {
   late String name;
   late String path;
   String description='Loading description...';
-  String weatherdescription="Loading weather forecast...";
+  String weatherdescription="Loading...";
   String mainTemperature="";
   String visibility="";
   String windSpeed="";
   String windDirection="";
   String sunrise="";
   String sunset="";
-  String iconUrl="";
+  String iconUrl='';
   @override
   void initState(){
     super.initState();
@@ -178,13 +178,14 @@ class _PlacesdetailsState extends State<Placesdetails> {
                     ),//the name of the location
                     SizedBox(height: 10,),
                     //popular spots
-                    Container(
-                      width: 300,
-                      height: 150,
-                      padding: EdgeInsets.all(5),
-                      child: Image.network(imageUrls[currentIndex],
-                      fit: BoxFit.cover,),
-                    ),
+                    imageUrls.isNotEmpty
+                    ? Image.network(imageUrls[currentIndex])
+                    : Container(
+                        height: 150,
+                        width: 300,
+                        color: Colors.grey, // Placeholder UI
+                        child: Center(child: CircularProgressIndicator()),
+                      ),
                     SizedBox(height: 10,),
                     Text(description,
                     maxLines: 5,
@@ -261,16 +262,17 @@ class _PlacesdetailsState extends State<Placesdetails> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             //image
-                            SizedBox(
-                              height: 80,
-                              width: 80,
-                              child: Image.network(iconUrl,
-                              fit: BoxFit.cover,),
-                            ),
+                            iconUrl.isNotEmpty
+                            ? Image.network(iconUrl, fit: BoxFit.cover,)
+                            : Container(
+                                height: 80,
+                                width: 80,
+                                child: Center(child: CircularProgressIndicator()),
+                              ),
                           ],
                         ),
                         
-                        SizedBox(width: 70,),
+                        SizedBox(width: 80,),
                         
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -280,7 +282,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),),
-                            SizedBox(height: 5,),
+                            SizedBox(height: 10,),
                             Text(weatherdescription,
                             style: TextStyle(
                               fontSize: 14
@@ -289,6 +291,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                         ),
                       ],
                     ),
+                    SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

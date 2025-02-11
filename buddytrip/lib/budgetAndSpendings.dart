@@ -42,6 +42,21 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
       'Transportation': transportationper,
       'Miscellaneous':miscellaneousper,
       'Savings':savingper};
+    return PieChart(
+      dataMap: dataMap,
+      chartType: ChartType.disc,
+      chartRadius: MediaQuery.of(context).size.width / 3.2,
+      legendOptions: LegendOptions(
+        showLegends: true,
+        showLegendsInRow: false,
+        legendPosition: LegendPosition.right,
+      ),
+      chartValuesOptions: ChartValuesOptions(
+        showChartValuesInPercentage: true,
+        showChartValuesOutside: true,
+      ),
+
+      );
 
   }
   //function to get percentage
@@ -264,7 +279,7 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                   //Pie chart
                   Container(
                     height: 200,
-                    decoration: BoxDecoration(color: Colors.black),
+                    child: buildPieChart(),
                   ),
                   Divider(color: Colors.grey,),
                   //budget sheet
