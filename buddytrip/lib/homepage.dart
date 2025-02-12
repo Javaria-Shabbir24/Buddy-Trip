@@ -1,5 +1,6 @@
 import 'package:buddytrip/bottomnavigationbar.dart';
 import 'package:buddytrip/budgetAndSpendings.dart';
+import 'package:buddytrip/menu.dart';
 import 'package:buddytrip/newTrip.dart';
 import 'package:buddytrip/placesDetails.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
       ),
-      endDrawer: Drawer(),
+      endDrawer: Menu(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
