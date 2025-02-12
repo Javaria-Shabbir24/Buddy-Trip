@@ -94,7 +94,7 @@ Widget createFAQ(String question, String answer){
                           fontSize: 16),)
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 20,),
                       //question1
                       Container(
                         padding: EdgeInsets.all(10),
@@ -125,7 +125,82 @@ Widget createFAQ(String question, String answer){
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  SizedBox(height: 20,),
+                  //Trip Booking section
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text('Trip Booking', style: TextStyle(fontWeight: FontWeight.bold,
+                          fontSize: 16),)
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      //question1
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          color: const Color.fromARGB(255, 207, 223, 233)
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            createFAQ('How can I book a trip?', 'You can book a trip by selecting your desired destination, choosing a suitable hotel, and confirming your travel details.')
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      //question2
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          color: const Color.fromARGB(255, 207, 223, 233)
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            createFAQ('Can I cancel my trip?', 'Yes, you can cancel your trip via sending an email. However, cancellation policies may vary depending on the hotel and booking terms.')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20,),
+                  //Hotel Booking section
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text('Hotel Booking', style: TextStyle(fontWeight: FontWeight.bold,
+                          fontSize: 16),)
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      //question1
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue),
+                          color: const Color.fromARGB(255, 207, 223, 233)
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            createFAQ('How do I book a hotel?', 'When booking a trip, you can choose from a list of available hotels in your selected destination and confirm your stay.')
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      
+                    ],
+                  ),
 
                 ],
               ),
