@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Help extends StatefulWidget {
   const Help({super.key});
@@ -10,6 +11,8 @@ class Help extends StatefulWidget {
 
 class _HelpState extends State<Help> {
 Map<String, bool> isExpanded={};
+//function to send email
+
 //function to return a question
 Widget createFAQ(String question, String answer){
   return Column(
@@ -241,9 +244,66 @@ Widget createFAQ(String question, String answer){
                           ),
                         ],
                       ),
-                      
+                      SizedBox(height: 20,),
+                      //Support & Assistance section
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text('Support & Assistance', style: TextStyle(fontWeight: FontWeight.bold,
+                              fontSize: 16),)
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          //question1
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue),
+                              color: const Color.fromARGB(255, 207, 223, 233)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                createFAQ('How can I contact support for help?', 'You can send a message through the app\'s help section and you can send your queries via email, and our support team will assist you.')
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          //question2
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue),
+                              color: const Color.fromARGB(255, 207, 223, 233)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                createFAQ('Is there 24/7 customer support available?', 'Yes, our support team is available around the clock to assist you with any travel-related queries.')
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text('Share your queries via email',
+                        style: TextStyle(fontFamily: 'IrishGrover',fontSize: 20,
+                        color: Color.fromARGB(255, 81, 96, 129)))
+                        ],
+                      ),
+                      Divider(color: Colors.blue,),
+                      SizedBox(height: 20,),
+                      ElevatedButton(onPressed: null, child: Text('send email', style: TextStyle(color: Color.fromARGB(255, 81, 96, 129)),)),
+                      SizedBox(height: 20,),
                     ],
                   ),
+
 
                 ],
               ),
