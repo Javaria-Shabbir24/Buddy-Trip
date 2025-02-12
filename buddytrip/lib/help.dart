@@ -73,8 +73,8 @@ Widget createFAQ(String question, String answer){
             SizedBox(height: 10,),
             Center(child:
             Container(
-              height: 150,
-              width: 350,
+              height: 170,
+              width: 400,
               padding: EdgeInsets.all(10),
               child: Lottie.asset('assets/help.json'),
             ),
@@ -305,7 +305,15 @@ Widget createFAQ(String question, String answer){
                         color: Color.fromARGB(255, 81, 96, 129)))
                         ],
                       ),
-                      Divider(color: Colors.blue,),
+                      Divider(color: const Color.fromARGB(255, 11, 117, 82),),
+                      SizedBox(height: 20,),
+                      Row( mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                      Icon(Icons.mail, color: Colors.blue),
+                      Text('  Contact us via email. 24/7 Availability! ',softWrap: true,),
+                      
+
+                      ]),
                       SizedBox(height: 20,),
                       ElevatedButton(onPressed: launchEmail, child: Text('send email', style: TextStyle(color: Color.fromARGB(255, 81, 96, 129)),)),
                       SizedBox(height: 20,),

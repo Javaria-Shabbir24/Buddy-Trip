@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 
@@ -141,6 +140,13 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Edit Your Profile',
+                  style: TextStyle(
+                    fontFamily: 'IrishGrover',
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold
+                  ),),
+                  SizedBox(height: 20,),
                   //username editing
                   Stack(children: [
                     TextFormField(
