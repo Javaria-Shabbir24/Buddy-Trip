@@ -197,7 +197,50 @@ Widget createFAQ(String question, String answer){
                           ],
                         ),
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 20,),
+                      //Budget Management section
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text('Budget Management', style: TextStyle(fontWeight: FontWeight.bold,
+                              fontSize: 16),)
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          //question1
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue),
+                              color: const Color.fromARGB(255, 207, 223, 233)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                createFAQ('How does the budget feature work?', 'The budget feature allows you to set and track your travel expenses on a monthly basis, ensuring you stay within your financial limits.')
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          //question2
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blue),
+                              color: const Color.fromARGB(255, 207, 223, 233)
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                createFAQ('Can I update my allocated budget?', 'Yes, you can adjust your budget at any time from the budget management section.')
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                       
                     ],
                   ),
