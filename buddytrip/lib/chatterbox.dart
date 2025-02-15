@@ -20,7 +20,7 @@ class _ChatterboxState extends State<Chatterbox> {
         _position = maxPosition;
       });
 
-      Future.delayed(Duration(milliseconds: 300), () {
+      Future.delayed(Duration(milliseconds: 20), () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Chatterbox1()),
@@ -95,7 +95,7 @@ class _ChatterboxState extends State<Chatterbox> {
                             slideAndNavigate(context);
                           },
                           child: AnimatedContainer(
-                            duration: Duration(milliseconds: 200),
+                            duration: Duration(milliseconds: 50),
                             transform: Matrix4.translationValues(_position, 0, 0),
                             child: Container(
                               width: 50,
