@@ -29,28 +29,22 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-      ),
+     
       body: SingleChildScrollView(
         
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Divider(
-              color: Colors.black,
-              thickness: 2,
-            ),
-            SizedBox(height: 18,),
+            SizedBox(height: 70,),
             Center(
               child: Text('Create an Account',
               style: TextStyle(
-              fontSize: 26,
+              fontSize: 30,
               fontFamily: 'IrishGrover',
               color: Color(0xFF3C3B3E),
             ),),
             ),
-            Padding(padding: EdgeInsets.all(25),
+            Padding(padding: EdgeInsets.all(20),
             child: Form(
               key: formKey, //maintaining a key for form
               child: Column(
@@ -150,6 +144,11 @@ class _SignupState extends State<Signup> {
             SizedBox(height: 30,),
             Center(
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF8F8989),
+                  
+                ),
+                
               onPressed: () async{
                 if(formKey.currentState!.validate()){// if all the fields are not empty
                 String name=usernameController.text.trim();
@@ -167,7 +166,11 @@ class _SignupState extends State<Signup> {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                 }
               },
-            child: Text('Sign up'), ),
+            child: Text('Sign up', style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 15,
+                          color: Colors.white),),
+               ),
             ),
             SizedBox(height: 10,),
             Row(
@@ -175,10 +178,18 @@ class _SignupState extends State<Signup> {
               children: [
                 Text('Already have an account?'),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  
+                ),
                   onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                   },
-                child: Text('Log in')),
+                child: Text('Log in',style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 15,
+                          color: const Color(0xFF8F8989),),
+)),
               ],
 
             ),

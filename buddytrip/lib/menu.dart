@@ -21,7 +21,7 @@ class Menu extends StatelessWidget {
             radius: 50,
           )),
           ListTile(
-            leading: Icon(Icons.person),
+            leading: Icon(Icons.person,),
             title: Text('Profile'),
             onTap: (){
               Navigator.push(context, 

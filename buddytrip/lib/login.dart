@@ -34,7 +34,7 @@ class _LoginState extends State<Login> {
               color: Colors.black,
               thickness: 2,
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 40,),
             Center(
               child: Text('Log in to your account',
               style: TextStyle(
@@ -92,6 +92,9 @@ class _LoginState extends State<Login> {
             SizedBox(height: 30,),
             Center(
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF8F8989),
+                ),
               onPressed: () async{
                 if(formKey.currentState!.validate()){// if all the fields are not empty
                 String name=usernameController.text.trim();
@@ -113,7 +116,10 @@ class _LoginState extends State<Login> {
                 }
                 }
               },
-            child: Text('Log In'), ),
+            child: Text('Log In',style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 15,
+                          color: Colors.white),), ),
             ),
             ],
             ),),
@@ -124,10 +130,17 @@ class _LoginState extends State<Login> {
               children: [
                 Text('Forgot your password?'),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF8F8989),
+                  
+                ),
                   onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Resetpassword()));
                   },
-                child: Text('Reset Password')),
+                child: Text('Reset Password',style: TextStyle(
+                          fontFamily: 'IrishGrover',
+                          fontSize: 15,
+                          color: Colors.white),)),
               ],
 
             ),

@@ -118,7 +118,11 @@ class _ResetpasswordState extends State<Resetpassword> {
               ),
               SizedBox(height: 30,),
               Center(
+
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF8F8989),
+                ),
                   onPressed: ()async{
                     if(formKey.currentState!.validate()){
                       String email=emailController.text.trim();
@@ -129,7 +133,10 @@ class _ResetpasswordState extends State<Resetpassword> {
                       confirmPasswordController.clear();
                     }
                   },
-                 child: Text('Reset Password'),),
+                 child: Text('Reset Password',style: TextStyle(
+              fontFamily: 'IrishGrover',
+              color: Colors.white,
+            ),),),
               ),
 
             ],
