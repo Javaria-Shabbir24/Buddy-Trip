@@ -11,89 +11,170 @@ class Chatterbox1 extends StatefulWidget {
 }
 
 class _Chatterbox1State extends State<Chatterbox1> {
-  final textcontroller=TextEditingController();
-  bool isLoading=false;
-  List<Map<String,String>> messages=[];
-  String apiKey='';
+  final textcontroller = TextEditingController();
+  bool isLoading = false;
+  List<Map<String, String>> messages = [];
+  String apiKey = '';
 
-  //load api key
   @override
   void initState() {
     loadApi();
     super.initState();
   }
-  Future<void> loadApi()async{
+
+  Future<void> loadApi() async {
     await dotenv.load();
-    apiKey=dotenv.env['GEMINI_API_KEY']?? "";
+    apiKey = dotenv.env['GEMINI_API_KEY'] ?? "";
   }
 
-  //send message to gemini api and get a response 
-  Future<void>sendMessage(BuildContext context)async{
-    //if the request is empty return
-    if(textcontroller.text.isEmpty){
+  Future<void> sendMessage(BuildContext context) async {
+    
+    if (textcontroller.text.isEmpty) {
       return;
     }
-    //load the message in a variable
-    String userMessage=textcontroller.text;
+    if (apiKey.isEmpty){
+      loadApi();
+    }
+    String userMessage = textcontroller.text;
     setState(() {
       textcontroller.clear();
+      messages.add({'role': 'user', 'text': userMessage});
+      isLoading = true;
     });
-    //add in the list
-    messages.add({'role':'user','text':userMessage});
-    isLoading=true;
-    updateUI(context);
 
-    //http request to api
-    try{
-      //response
+    try {
       final response = await http.post(
-      Uri.parse("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey"),
-      headers: {"Content-Type": "application/json"},
-      body: jsonEncode({
-        "contents": [
-          {
-            "parts": [
-              {"text": userMessage}
-            ]
-          }
-        ]
-      }),
-    );
-    //if response has been received
-    if(response.statusCode==200){
-      var data = jsonDecode(response.body);
-      String botMessage = data['candidates'][0]['content']['parts'][0]['text'];
-      //add message in the list
-      messages.add({"role": "bot", "text": botMessage});
-    }
-    else {
+        Uri.parse("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "contents": [
+            {
+              "parts": [
+                {"text": userMessage}
+              ]
+            }
+          ]
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        String botMessage = data['candidates'][0]['content']['parts'][0]['text'];
+        setState(() {
+          messages.add({"role": "bot", "text": botMessage});
+        });
+      } else {
+        setState(() {
           messages.add({"role": "bot", "text": "Error: Failed to get response"});
-        }
-      } catch (e) {
-        messages.add({"role": "bot", "text": "Error: $e"});
+        });
       }
-  isLoading = false;
-  updateUI(context);
-  }
-  //ui rebuild
-  void updateUI(BuildContext context) {
-  (context as Element).markNeedsBuild();
+    } catch (e) {
+      setState(() {
+        messages.add({"role": "bot", "text": "Error: $e"});
+      });
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(10),
-          child: Column(
+      backgroundColor:const Color.fromARGB(255, 194, 215, 233),
+      body: Column(
+        children: [
+          SizedBox(height: 50,),
+          Text('ChatterBox',style: TextStyle(fontFamily: 'IrishGrover',fontSize: 30),),
+          Divider(color: Colors.black,),
+          Flexible(
+            child: ListView.builder(
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final message = messages[index];
+                return Align(
+                  alignment: message['role'] == 'user' ? Alignment.centerRight : Alignment.centerLeft,
+                  child: Padding(padding: EdgeInsets.symmetric(vertical: 5 , horizontal: 10),
+                  child:Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //if its the bot
+                        if(message['role']=='bot')
+                        CircleAvatar(
+                          backgroundImage: AssetImage('assets/chatterbox.jpg'),
+                        ),
+                        SizedBox(width: 8,),
+                        Flexible(child: 
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                          color: message['role'] == 'user' ? Colors.blue : Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          message['text']!,
+                          style: TextStyle(color: Colors.black),
+                        ),
+
+                        )),
+                        SizedBox(width: 8),
+                        if (message['role'] == 'user') 
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/pfp.jpg'),
+                          ),
+
+                      ],
+                  ),),
+                );
+              },
+            ),
+          ),
+          if (isLoading) CircularProgressIndicator(),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Padding(
+  padding: EdgeInsets.all(10),
+  child: Container(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30), // Rounded corners
+      border: Border.all(color: Colors.grey.shade300), // Light border
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: TextField(
+                          controller: textcontroller,
+                          decoration: InputDecoration(
+                            hintText: 'Type a message...',
+                            border: InputBorder.none, // Removes default underline
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.blue, // Button background color
+                        shape: BoxShape.circle, 
+                        
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.send, color: Colors.white),
+                        onPressed: () => sendMessage(context),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
 
           ),
-        ),
-        
+        ],
       ),
-
     );
   }
 }
