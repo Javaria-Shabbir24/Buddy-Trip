@@ -26,6 +26,26 @@ class _Chatterbox1State extends State<Chatterbox1> {
   }
 
   //send message to gemini api and get a response 
+  Future<void>sendMessage(BuildContext context)async{
+    //if the request is empty return
+    if(textcontroller.text.isEmpty){
+      return;
+    }
+    //load the message in a variable
+    String userMessage=textcontroller.text;
+    setState(() {
+      textcontroller.clear();
+    });
+    //add in the list
+    messages.add({'role':'user','text':userMessage});
+    isLoading=true;
+
+  }
+  //ui rebuild
+  void updateUI(BuildContext context) {
+  (context as Element).markNeedsBuild();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
