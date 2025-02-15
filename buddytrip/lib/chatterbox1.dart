@@ -82,7 +82,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color.fromARGB(255, 194, 215, 233),
+      backgroundColor:const Color.fromARGB(255, 245, 237, 243),
       body: Column(
         children: [
           SizedBox(height: 50,),
@@ -95,7 +95,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
                 final message = messages[index];
                 return Align(
                   alignment: message['role'] == 'user' ? Alignment.centerRight : Alignment.centerLeft,
-                  child: Padding(padding: EdgeInsets.symmetric(vertical: 5 , horizontal: 10),
+                  child: Padding(padding: EdgeInsets.symmetric(vertical: 10 , horizontal: 16),
                   child:Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -107,14 +107,14 @@ class _Chatterbox1State extends State<Chatterbox1> {
                         SizedBox(width: 8,),
                         Flexible(child: 
                         Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                          color: message['role'] == 'user' ? Colors.blue : Colors.grey[300],
+                          color: message['role'] == 'user' ?  Color.fromARGB(255, 130, 92, 165) : Colors.grey[300],
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
                           message['text']!,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: message['role']=='user' ? Colors.white: Colors.black),
                         ),
 
                         )),
@@ -134,23 +134,23 @@ class _Chatterbox1State extends State<Chatterbox1> {
           Padding(
             padding: EdgeInsets.all(10),
             child: Padding(
-  padding: EdgeInsets.all(10),
-  child: Container(
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(30), // Rounded corners
-      border: Border.all(color: Colors.grey.shade300), // Light border
-    ),
-    child: Row(
-      children: [
-        Expanded(
-          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30), 
+                border: Border.all(color: Colors.grey.shade300), 
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: TextField(
                           controller: textcontroller,
                           decoration: InputDecoration(
                             hintText: 'Type a message...',
-                            border: InputBorder.none, // Removes default underline
+                            border: InputBorder.none, 
                           ),
                         ),
                       ),
@@ -158,7 +158,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
                     Container(
                       margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: Colors.blue, // Button background color
+                        color:  Color.fromARGB(255, 130, 92, 165),
                         shape: BoxShape.circle, 
                         
                       ),
