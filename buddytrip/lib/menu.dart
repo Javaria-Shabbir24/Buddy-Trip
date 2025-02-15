@@ -1,5 +1,6 @@
 import 'package:buddytrip/about.dart';
 import 'package:buddytrip/budgetAndSpendings.dart';
+import 'package:buddytrip/chatterbox.dart';
 import 'package:buddytrip/help.dart';
 import 'package:buddytrip/home.dart';
 import 'package:buddytrip/profile.dart';
@@ -17,7 +18,7 @@ class Menu extends StatelessWidget {
           DrawerHeader(
             child: CircleAvatar(
             backgroundImage: AssetImage('assets/pfp.jpg'),
-            radius: 60,
+            radius: 50,
           )),
           ListTile(
             leading: Icon(Icons.person),
@@ -36,19 +37,27 @@ class Menu extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.chat_bubble),
+            title: Text('ChatterBox'),
+            onTap: (){
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=>Chatterbox()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.wallet),
+            title: Text('Expense Tracker'),
+            onTap: (){
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=>Budgetandspendings()));
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.help),
             title: Text('Help Center'),
             onTap: (){
               Navigator.push(context, 
               MaterialPageRoute(builder: (context)=>Help()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.wallet),
-            title: Text('Monthly Expense'),
-            onTap: (){
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (context)=>Budgetandspendings()));
             },
           ),
           ListTile(

@@ -1,6 +1,6 @@
+import 'package:buddytrip/onboardingscreen4.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'onboardingscreen3.dart';
 import 'home.dart';
 
 class Onboardingscreen2 extends StatelessWidget {
@@ -97,7 +97,7 @@ class Onboardingscreen2 extends StatelessWidget {
                         Navigator.push(context, 
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: Onboardingscreen3(),
+                          child: Onboardingscreen4(),
                           duration: Duration(milliseconds: 400),
                         
 
