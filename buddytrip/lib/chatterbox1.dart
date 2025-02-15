@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Chatterbox1 extends StatefulWidget {
   const Chatterbox1({super.key});
@@ -39,7 +41,39 @@ class _Chatterbox1State extends State<Chatterbox1> {
     //add in the list
     messages.add({'role':'user','text':userMessage});
     isLoading=true;
+    updateUI(context);
 
+    //http request to api
+    try{
+      //response
+      final response = await http.post(
+      Uri.parse("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$apiKey"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "contents": [
+          {
+            "parts": [
+              {"text": userMessage}
+            ]
+          }
+        ]
+      }),
+    );
+    //if response has been received
+    if(response.statusCode==200){
+      var data = jsonDecode(response.body);
+      String botMessage = data['candidates'][0]['content']['parts'][0]['text'];
+      //add message in the list
+      messages.add({"role": "bot", "text": botMessage});
+    }
+    else {
+          messages.add({"role": "bot", "text": "Error: Failed to get response"});
+        }
+      } catch (e) {
+        messages.add({"role": "bot", "text": "Error: $e"});
+      }
+  isLoading = false;
+  updateUI(context);
   }
   //ui rebuild
   void updateUI(BuildContext context) {
