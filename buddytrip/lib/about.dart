@@ -58,14 +58,14 @@ class _AboutState extends State<About> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 50),
+              const SizedBox(height: 80),
               const Text(
                 'Welcome to BuddyTrip!',
                 style: TextStyle(
                   fontSize: 26,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                   color: Colors.black,
-                  fontFamily: 'IrishGrover',
+                  //fontFamily: 'IrishGrover',
                 ),
               ),
               const SizedBox(height: 10),
@@ -161,7 +161,7 @@ class _AboutState extends State<About> {
                 maxLines: 4,
                 decoration: InputDecoration(
                   labelText: 'Your Feedback',
-                  prefixIcon: const Icon(Icons.feedback),
+                  prefixIcon: const Icon(Icons.rate_review),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -174,10 +174,9 @@ class _AboutState extends State<About> {
                 child: ElevatedButton.icon(
                   onPressed: _submitFeedback,
                   label: const Text('Submit'),
-                  icon: const Icon(Icons.send, color: Color.fromARGB(255, 22, 68, 23),),
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                    backgroundColor: Colors.green,
+                    backgroundColor: const Color(0xFF8F8989),
                     foregroundColor: Colors.white,
                     textStyle: const TextStyle(fontSize: 14),
                   ),
