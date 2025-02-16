@@ -31,20 +31,17 @@ class _ResetpasswordState extends State<Resetpassword> {
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Divider(
-            color: Colors.black,
-            thickness: 2,
-          ),
+          
           SizedBox(height: 20,),
           Center(
             child: Text('Reset Account Password',
           style: TextStyle(
-            fontFamily: 'IrishGrover',
+            //fontFamily: 'IrishGrover',
             fontSize: 28,
             color: Color(0xFF3C3B3E),
           ),),
           ),
-          SizedBox(height: 40,),
+          SizedBox(height: 20,),
           Padding(padding: EdgeInsets.all(20),
           child: Form(
             key: formKey,
@@ -54,7 +51,7 @@ class _ResetpasswordState extends State<Resetpassword> {
               Text('Email:',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.bold,
               ),),
               SizedBox(height: 20,),
               TextFormField(
@@ -74,7 +71,7 @@ class _ResetpasswordState extends State<Resetpassword> {
               Text('Password:',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.bold,
               ),),
               SizedBox(height: 20,),
               TextFormField(
@@ -96,7 +93,7 @@ class _ResetpasswordState extends State<Resetpassword> {
               Text('Confirm Password:',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.bold,
               ),),
               SizedBox(height: 20,),
               TextFormField(
@@ -134,7 +131,7 @@ class _ResetpasswordState extends State<Resetpassword> {
                     }
                   },
                  child: Text('Reset Password',style: TextStyle(
-              fontFamily: 'IrishGrover',
+              //fontFamily: 'IrishGrover',
               color: Colors.white,
             ),),),
               ),
