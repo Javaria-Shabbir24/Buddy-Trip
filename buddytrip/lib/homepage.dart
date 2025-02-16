@@ -74,7 +74,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                           hintText: 'where do you want to go?  ',
                           hintStyle: TextStyle(color:Colors.grey),
-                          prefixIcon: Icon(Icons.search, color: Colors.black,),
+                          prefixIcon: Icon(Icons.search, color: Color(0xFF3C3B3E),),
                           
                         ),
                         onFieldSubmitted: (value) => {
@@ -102,8 +102,8 @@ class _HomepageState extends State<Homepage> {
             child: 
             Text('Mostly Visited Places',
             style: TextStyle(
-              fontFamily: 'IrishGrover',
-              fontSize: 26,
+              //fontFamily: 'IrishGrover',
+              fontSize: 22,
               color: Colors.black
             ),),
             
@@ -138,8 +138,8 @@ class _HomepageState extends State<Homepage> {
                   children: [
                       Text('Dream Trips Within Your Budget!',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
-                    fontSize: 26,
+                    //fontFamily: 'IrishGrover',
+                    fontSize: 22,
                     color: Colors.black
                   ),),
                   SizedBox(height: 20,),
@@ -164,18 +164,20 @@ class _HomepageState extends State<Homepage> {
                               
                           Text('Plan a New \nTrip',
                           style: TextStyle(
-                            fontFamily: 'IrishGrover',
+                            //fontFamily: 'IrishGrover',
+                            color: Color(0xFF3C3B3E),
                             fontSize: 15,
                           ),
                           ),
                           SizedBox(width: 10,),
-                          Icon(Icons.travel_explore)]),
+                          Icon(Icons.travel_explore, color: Color(0xFF3C3B3E),)]),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text('Explore and Start\na new trip',
                             style: TextStyle(
+                              color: Color(0xFF3C3B3E),
                             fontSize: 10
                           ), 
                           softWrap: true,),
@@ -185,7 +187,7 @@ class _HomepageState extends State<Homepage> {
                               Navigator.push(context, 
                               MaterialPageRoute(builder: (context)=>Newtrip()))
                             },
-                            child: Icon(Icons.arrow_forward,   size: 20,),
+                            child: Icon(Icons.arrow_forward,   size: 20,color: Color(0xFF3C3B3E),),
                           ),
                           
                             ],
@@ -213,12 +215,13 @@ class _HomepageState extends State<Homepage> {
                             children: [
                           Text('Budget and\nSpendings',
                           style: TextStyle(
-                            fontFamily: 'IrishGrover',
+                           // fontFamily: 'IrishGrover',
+                           color: Color(0xFF3C3B3E),
                             fontSize: 15
                           ),
                           ),
-                          SizedBox(width: 10,),
-                          Icon(Icons.wallet)]),
+                          SizedBox(width: 16,),
+                          Icon(Icons.account_balance,color:Color(0xFF3C3B3E),)]),
                           
                           SizedBox(height: 10,),
                           Row(
@@ -226,6 +229,7 @@ class _HomepageState extends State<Homepage> {
                             children: [
                               Text('Handle your budget\nat ease',
                             style: TextStyle(
+                              color: Color(0xFF3C3B3E),
                             fontSize: 10
                           ),),
                           SizedBox(width: 10,),
@@ -234,7 +238,7 @@ class _HomepageState extends State<Homepage> {
                               Navigator.push(context, 
                               MaterialPageRoute(builder: (context)=>Budgetandspendings()))
                             },
-                            child: Icon(Icons.arrow_forward,size: 20,),
+                            child: Icon(Icons.arrow_forward,size: 20,color: Color(0xFF3C3B3E),),
                           ),
                             ],
                           )
@@ -268,13 +272,14 @@ class _HomepageState extends State<Homepage> {
                               
                           Text('Get Relevant\nGuidance',
                           style: TextStyle(
-                            fontFamily: 'IrishGrover',
+                            //fontFamily: 'IrishGrover',
+                            color: Color(0xFF3C3B3E),
                             fontSize: 15
                           ),
                           
                           ),
                           SizedBox(width: 10,),
-                          Icon(Icons.chat_bubble)]),
+                          Icon(Icons.smart_toy,color: Color(0xFF3C3B3E),)]),
                           
                           SizedBox(height: 10,),
                           Row(
@@ -282,16 +287,17 @@ class _HomepageState extends State<Homepage> {
                             children: [
                               Text('Chat and Explore\nwith ChatterBox',
                             style: TextStyle(
+                              color: Color(0xFF3C3B3E),
                             fontSize: 10
                           ), 
                           softWrap: true,),
-                          SizedBox(width: 12,),
+                          SizedBox(width: 16,),
                           GestureDetector(
                             onTap: () => {
                               Navigator.push(context, 
                               MaterialPageRoute(builder: (context)=>Chatterbox()))
                             },
-                            child: Icon(Icons.arrow_forward,size: 20,),
+                            child: Icon(Icons.arrow_forward,size: 20,color: Color(0xFF3C3B3E),),
                           ),
                           
                             ],
@@ -331,7 +337,7 @@ Widget createPlaceCard(BuildContext context, String name, String path){
   
     padding: EdgeInsets.all(20),
     decoration: BoxDecoration(
-      border: Border.all(color: const Color.fromARGB(255, 175, 118, 118),width: 5),
+      border: Border.all(color: const Color(0xFF8F8989),width: 5),
       borderRadius: BorderRadius.circular(20),
       image: DecorationImage(image: AssetImage(path),
       fit: BoxFit.cover),
@@ -353,7 +359,7 @@ Widget createPlaceCard(BuildContext context, String name, String path){
             child: Text(name,
         style: TextStyle(color: const Color.fromARGB(255, 116, 105, 105),
         fontSize: 15,
-        fontFamily: 'IrishGrover'
+        //fontFamily: 'IrishGrover'
         ),),
           ),
           
