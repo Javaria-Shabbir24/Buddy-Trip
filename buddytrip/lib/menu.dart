@@ -12,6 +12,7 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Color(0xFFD9D9D9),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -37,7 +38,7 @@ class Menu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.chat_bubble),
+            leading: Icon(Icons.smart_toy),
             title: Text('ChatterBox'),
             onTap: (){
               Navigator.push(context, 
@@ -45,7 +46,7 @@ class Menu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.wallet),
+            leading: Icon(Icons.account_balance),
             title: Text('Expense Tracker'),
             onTap: (){
               Navigator.push(context, 
