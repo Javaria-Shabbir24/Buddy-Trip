@@ -1,5 +1,5 @@
 # BuddyTrip  
- 
+<img src="buddytrip/assets/logo.jpg" alt="BuddyTrip Logo" width="200" height="200">
 
 ## 📌 Introduction  
 **BuddyTrip** is a travel companion app that allows users to:  
