@@ -179,6 +179,7 @@ class _NewtripState extends State<Newtrip> {
                         ),
                       )
                     : Center(child: Text("No hotels available")),
+                    
  
                   ],
                 ),

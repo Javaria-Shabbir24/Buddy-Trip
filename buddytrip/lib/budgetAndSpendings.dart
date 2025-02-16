@@ -27,6 +27,9 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
   int monthNumber=0;
   String month='';
   int counter=0;
+  final clothingAController=TextEditingController();
+  final transportationAController=TextEditingController();
+  final miscellaneousAController=TextEditingController();
   @override
   void initState() {
     monthNumber=date.month;
@@ -34,10 +37,14 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
     getRoomsExpense();
     super.initState();
   }
+  //function to allocate budget
+  void allocateBudget(){
+
+  }
   //function to build Pie Chart
   Widget buildPieChart(){
     Map<String, double> dataMap={
-      'Hotel Bookings':hotelper,
+      'Accomodation':hotelper,
       'Clothing': clothingper,
       'Transportation': transportationper,
       'Miscellaneous':miscellaneousper,
@@ -230,6 +237,156 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                               )
                             ],
                        ),
+                        SizedBox(width: 38,),
+                       //Allocate Budget cell
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.receipt_long),
+                          SizedBox(width: 10,),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              GestureDetector(
+                                onTap: (){
+                                  clothingAController.text = clothing.toString();
+                                  transportationAController.text = transportation.toString();
+                                  miscellaneousAController.text = miscellaneous.toString();
+                                  showDialog(context: context, builder: (BuildContext context){
+                                    return Dialog(
+                                      child: SingleChildScrollView(
+                                      child:Container(
+                                        height: 480,
+                                        width: 40,
+                                        padding: EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: Colors.black,width: 2),
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: Colors.white,
+                                          
+                                        ),
+                                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(height:10),
+                                            Center(child:
+                                            Text('Update Expense Allocation', style: TextStyle(fontSize: 18),),),
+                                            SizedBox(height:30),
+                                          Text('Clothing'),
+                                          SizedBox(height: 8,),
+                                          Stack(children: [
+                                            TextFormField(
+                                            controller: clothingAController, 
+                                            enabled: true,
+                                            decoration: InputDecoration(
+                                              hintText: '$clothing',
+                                              border: OutlineInputBorder(),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 12,
+                                            right: 7, 
+                                            child: Icon(Icons.edit),
+                                            ),
+                                          
+                                          ],),
+                                          SizedBox(height: 8,),
+                                          Text('Transportation'),
+                                          SizedBox(height: 8,),
+                                          Stack(children: [
+                                            TextFormField(
+                                            controller: transportationAController, 
+                                            enabled: true,
+                                            decoration: InputDecoration(
+                                              hintText: '$transportation',
+                                              border: OutlineInputBorder(),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 12,
+                                            right: 7, 
+                                            child:Icon(Icons.edit),
+                                            ),
+                                          
+                                          ],),
+                                          SizedBox(height: 8,),
+                                          Text('Miscellaneous'),
+                                          SizedBox(height: 8,),
+                                          Stack(children: [
+                                            TextFormField(
+                                            controller: miscellaneousAController, 
+                                            enabled: true,
+                                            decoration: InputDecoration(
+                                              hintText: '$miscellaneous',
+                                              border: OutlineInputBorder(),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: 12,
+                                            right: 7, 
+                                            child:Icon( Icons.edit),
+                                            ),
+                                          
+                                          ],),
+                                          SizedBox(height: 20,),
+                                          Center(
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF8F8989),),
+                                                onPressed: () async {
+                                                  setState(() {
+                                                    clothing = double.parse(clothingAController.text);
+                                                    transportation = double.parse(transportationAController.text);
+                                                    miscellaneous = double.parse(miscellaneousAController.text);
+                                                    monthlySpendings = clothing + roomsExpenditure + transportation + miscellaneous;
+                                                    remainingBalance = currentBalance - monthlySpendings;
+                                                    transportationper = getPercentage(transportation);
+                                                    clothingper = getPercentage(clothing);
+                                                    miscellaneousper = getPercentage(miscellaneous);
+                                                    savingper = getPercentage(remainingBalance);
+                                                    hotelper = getPercentage(roomsExpenditure);
+
+                                                  });
+
+                                                  // Update Firestore document
+                                                  try {
+                                                    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+                                                        .collection('Budget')
+                                                        .where('month', isEqualTo: month)
+                                                        .get();
+
+                                                    if (querySnapshot.docs.isNotEmpty) {
+                                                      for (var doc in querySnapshot.docs) {
+                                                        await doc.reference.update({
+                                                          'clothing': clothing,
+                                                          'transportation': transportation,
+                                                          'miscellaneous': miscellaneous,
+                                                          'netBalance': remainingBalance,
+                                                        });
+                                                      }
+                                                    }
+                                                  } catch (e) {
+                                                    print('Error updating Firestore document: $e');
+                                                  }
+
+                                                  // Close the dialog
+                                                  Navigator.of(context).pop();
+
+                                              }, child: Text('Save Changes',style: TextStyle(
+                                                color:Colors.white
+                                              ),)),
+                                            )
+                                        ],),
+                                      ),),
+                                    );
+
+                                  });
+
+                                  allocateBudget();
+                                },child:
+                              Text('Allocate Expenses'),),
+                            ],
+                          )
+                        ],
+                      ),
                     ],
                   ),
                   
@@ -296,7 +453,7 @@ class _BudgetandspendingsState extends State<Budgetandspendings> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Hotel Bookings',style: TextStyle(fontWeight: FontWeight.bold),),
+                              Text('Accomodation',style: TextStyle(fontWeight: FontWeight.bold),),
                               Text('percentage',style: TextStyle(fontSize: 12),),
                             ],
                           ),
