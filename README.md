@@ -15,6 +15,7 @@
 - **Email Integration**: URL Launcher Package
 - **Animations**: Lottie Json Files
 - **Logo**: Canva
+- **UI Design**: Figma [Visit Design Repository](https://github.com/Javaria-Shabbir24/BuddyTrip)
 
 ## 🚀 App Workflow  
 1. **Onboarding Screens**:  
