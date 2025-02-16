@@ -88,7 +88,7 @@ flutter:
     - assets/help.json
     - assets/travel.json
     - assets/chatterbox.jpg
-    - assets/chatterbox.json
+    - assets/chatterbox1.json
     - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

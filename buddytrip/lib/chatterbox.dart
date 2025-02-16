@@ -64,14 +64,14 @@ class _ChatterboxState extends State<Chatterbox> {
                   Text(
                     'ChatterBox!',
                     style: TextStyle(
-                      color: Color.fromARGB(255, 130, 92, 165),
+                      color: const Color(0xFF8F8989),
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 30),
                   Container(
-                    child: Lottie.asset('assets/chatterbox.json'),
+                    child: Lottie.asset('assets/chatterbox1.json'),
                   ),
                   SizedBox(height: 30),
                   Container(
@@ -80,7 +80,7 @@ class _ChatterboxState extends State<Chatterbox> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(30),
-                      color: Color.fromARGB(255, 130, 92, 165),
+                      color: const Color(0xFF8F8989),
                     ),
                     child: Row(
                       children: [
@@ -101,7 +101,7 @@ class _ChatterboxState extends State<Chatterbox> {
                               width: 50,
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 199, 161, 189),
+                                color: Color(0xFFD9D9D9),
                                 border: Border.all(color: Colors.white),
                                 borderRadius: BorderRadius.circular(40),
                               ),

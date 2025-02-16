@@ -82,11 +82,19 @@ class _Chatterbox1State extends State<Chatterbox1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color.fromARGB(255, 245, 237, 243),
+      backgroundColor:Color(0xFFD9D9D9),
       body: Column(
         children: [
           SizedBox(height: 50,),
-          Text('ChatterBox',style: TextStyle(fontFamily: 'IrishGrover',fontSize: 30),),
+          Row(children: [
+            SizedBox(width: 80,),
+          Text('ChatterBox',style: TextStyle(//fontFamily: 'IrishGrover',
+          fontSize: 30,color: Color(0xFF3C3B3E),),),
+          SizedBox(width: 10,),
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage('assets/chatterbox.jpg'),
+          )],),
           Divider(color: Colors.black,),
           Flexible(
             child: ListView.builder(
@@ -109,7 +117,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
                         Container(
                           padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                          color: message['role'] == 'user' ?  Color.fromARGB(255, 130, 92, 165) : Colors.grey[300],
+                          color: message['role'] == 'user' ?  const Color(0xFF8F8989) : Colors.grey[300],
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -130,7 +138,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
               },
             ),
           ),
-          if (isLoading) CircularProgressIndicator(),
+          //if (isLoading) CircularProgressIndicator(),
           Padding(
             padding: EdgeInsets.all(10),
             child: Padding(
@@ -158,7 +166,7 @@ class _Chatterbox1State extends State<Chatterbox1> {
                     Container(
                       margin: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color:  Color.fromARGB(255, 130, 92, 165),
+                        color:  Color(0xFF3C3B3E),
                         shape: BoxShape.circle, 
                         
                       ),
