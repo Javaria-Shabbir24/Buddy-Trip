@@ -28,15 +28,15 @@ class Onboardingscreen5 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Get Personalized Recommendations',
+                  Text('  Get Personalized\n Recommendations',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                    //fontFamily: 'IrishGrover',
                     fontSize: 26,
                   ),),
                   SizedBox(height: 18,),
                   Align(
                     alignment: Alignment.center,
-                    child: Text('Receive tailored suggestions based on your preferences.',
+                    child: Text('Receive any trip related suggestions from us. Chatterbox is here to guide you every step of the way—ask, explore, and let us lead you to the right path!',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 17,
@@ -44,7 +44,7 @@ class Onboardingscreen5 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   ),
                   ),
-                  SizedBox(height: 80,),
+                  SizedBox(height: 50,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -65,7 +65,7 @@ class Onboardingscreen5 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Skip',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Color(0xFF8F8989)),
                           ),
@@ -102,7 +102,7 @@ class Onboardingscreen5 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Next',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),

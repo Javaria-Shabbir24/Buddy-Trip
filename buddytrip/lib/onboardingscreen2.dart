@@ -1,4 +1,4 @@
-import 'package:buddytrip/onboardingscreen4.dart';
+import 'package:buddytrip/onboardingscreen3.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'home.dart';
@@ -32,7 +32,7 @@ class Onboardingscreen2 extends StatelessWidget {
                 children: [
                   Text('Plan Your Journey',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                    //fontFamily: 'IrishGrover',
                     fontSize: 26,
                   ),),
                   SizedBox(height: 18,),
@@ -67,7 +67,7 @@ class Onboardingscreen2 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Skip',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Color(0xFF8F8989)),
                           ),
@@ -97,7 +97,7 @@ class Onboardingscreen2 extends StatelessWidget {
                         Navigator.push(context, 
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: Onboardingscreen4(),
+                          child: Onboardingscreen3(),
                           duration: Duration(milliseconds: 400),
                         
 
@@ -110,7 +110,7 @@ class Onboardingscreen2 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Next',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),

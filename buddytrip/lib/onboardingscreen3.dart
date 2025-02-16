@@ -31,15 +31,15 @@ class Onboardingscreen3 extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   
-                  Text('Collaborate with Friends',
+                  Text('Share Feedback',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
-                    fontSize: 21,
+                    //fontFamily: 'IrishGrover',
+                    fontSize: 24,
                   ),),
                   SizedBox(height: 18,),
                   Align(
                     alignment: Alignment.center,
-                    child: Text('Invite friends and family to plan trips together. Share ideas, plans, and updates.',
+                    child: Text('We welcome your feedback. Send us your feedback and your experience with BuddyTrip!',
                     style: TextStyle(
                     fontStyle: FontStyle.normal,
                     fontSize: 16,
@@ -68,7 +68,7 @@ class Onboardingscreen3 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Skip',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Color(0xFF8F8989)),
                           ),
@@ -108,7 +108,7 @@ class Onboardingscreen3 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Next',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),

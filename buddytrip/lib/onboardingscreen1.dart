@@ -31,7 +31,7 @@ class Onboardingscreen1 extends StatelessWidget {
                 children: [
                   const Text('Welcome to BuddyTrip',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                    //fontFamily: 'IrishGrover',
                     fontSize: 26,
                   ),),
                   const SizedBox(height: 18,),
@@ -69,7 +69,7 @@ class Onboardingscreen1 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Next',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),

@@ -32,7 +32,7 @@ class Onboardingscreen4 extends StatelessWidget {
                 children: [
                   Text('Track Your Expenses',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                    //fontFamily: 'IrishGrover',
                     fontSize: 24,
                   ),),
                   SizedBox(height: 18,),
@@ -67,7 +67,7 @@ class Onboardingscreen4 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Skip',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Color(0xFF8F8989)),
                           ),
@@ -106,7 +106,7 @@ class Onboardingscreen4 extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Next',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),
