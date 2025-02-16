@@ -65,7 +65,8 @@ class _NewtripState extends State<Newtrip> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('TRIP DATE SELECTION',
-                    style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    style: TextStyle(fontSize: 18,
+              color: Color(0xFF3C3B3E),),),
                     SizedBox(height: 20,),
                     Container(
                       height: 50,
@@ -130,8 +131,8 @@ class _NewtripState extends State<Newtrip> {
                         children: [
                           Text('DESTINATION',
                           style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold
+                            fontSize: 18,
+              color: Color(0xFF3C3B3E),
                           ),),
                           SizedBox(width: 50,),
                           DropdownButton(
@@ -157,8 +158,8 @@ class _NewtripState extends State<Newtrip> {
                     SizedBox(height: 20,),
                     Text('EXPLORE HOTELS',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                      fontSize: 18,
+              color: Color(0xFF3C3B3E),
                     ),),
                     SizedBox(height: 10,),
                     hotels.isNotEmpty
