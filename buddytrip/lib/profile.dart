@@ -109,7 +109,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFD9D9D9),
       body:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -142,9 +142,9 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Text('Edit Your Profile',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                   // fontFamily: 'IrishGrover',
                     fontSize: 24,
-                    fontWeight: FontWeight.bold
+                   // fontWeight: FontWeight.bold
                   ),),
                   SizedBox(height: 20,),
                   //username editing
@@ -216,11 +216,13 @@ class _ProfileState extends State<Profile> {
                   ],),
                   SizedBox(height: 30,),
                   Center(
-                    child: ElevatedButton(onPressed: 
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF8F8989),),
+                      onPressed: 
                     (){
                        updateValues();
                     }, child: Text('Save Changes',style: TextStyle(
-                      color: Colors.green
+                      color:Colors.white
                     ),)),
                   )
                 ],
