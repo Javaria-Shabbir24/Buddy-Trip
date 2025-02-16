@@ -14,6 +14,7 @@
 - **APIs**: OpenWeatherMap API, Wikipedia API, Gemini API  
 - **Email Integration**: URL Launcher Package
 - **Animations**: Lottie Json Files
+- **Logo**: Canva
 
 ## 🚀 App Workflow  
 1. **Onboarding Screens**:  
