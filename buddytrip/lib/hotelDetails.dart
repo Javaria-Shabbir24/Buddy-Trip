@@ -105,8 +105,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
                 child: Text(
                   widget.name, style: TextStyle(
                     fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
+              color: Color(0xFF3C3B3E),
                   ),
                 ),),
                 SizedBox(height: 5,),
@@ -116,10 +115,10 @@ class _HoteldetailsState extends State<Hoteldetails> {
                 SizedBox(height: 5,),
                 Text('ROOMS BOOKING',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
+                  fontSize: 18,
+              color: Color(0xFF3C3B3E),
                 ),),
-                SizedBox(height: 10,),
+                SizedBox(height: 30,),
                 //standard room
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -296,7 +295,9 @@ class _HoteldetailsState extends State<Hoteldetails> {
                 SizedBox(height: 20,),
                 Center(child: 
                 SizedBox(width: 100,height: 50, child: 
-                FloatingActionButton(onPressed:(){
+                FloatingActionButton(
+                  backgroundColor:const Color(0xFF8F8989),
+                  onPressed:(){
                   showDialog(context: context, builder: (BuildContext context){
                     return Dialog(
                       
@@ -330,16 +331,25 @@ class _HoteldetailsState extends State<Hoteldetails> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(width: 20,),
-                                ElevatedButton(onPressed: (){
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:const Color(0xFF8F8989),
+                                  ),
+                                  onPressed: (){
                                   Navigator.of(context).pop();
-                                }, child: Text('No'),), 
+                                }, child: Text('No',
+                                style: TextStyle(color: Colors.white),),), 
                                 SizedBox(width: 50,),
-                                ElevatedButton(onPressed: (){
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:const Color(0xFF8F8989),
+                                  ),
+                                  onPressed: (){
                                   bookRooms();
                                   updateBudget();
                                   
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Roomreservation()));
-                                }, child: Text('Yes'),), 
+                                }, child: Text('Yes',style: TextStyle(color: Colors.white),),), 
                               ],
                             )
 
@@ -352,7 +362,7 @@ class _HoteldetailsState extends State<Hoteldetails> {
                   });
                 },
                  
-                child: Text('Book Rooms'))))
+                child: Text('Book Rooms',style: TextStyle(color: Colors.white),))))
               ],
               
             ),),),
