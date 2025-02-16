@@ -64,9 +64,9 @@ Widget createFAQ(String question, String answer){
             SizedBox(height: 10,),
             Padding(padding: EdgeInsets.all(12),child:
             Text('How can we help?',style: TextStyle(
-              fontFamily: 'IrishGrover',
+              //fontFamily: 'IrishGrover',
               fontSize: 26,
-              color: Color.fromARGB(255, 81, 96, 129)
+              color: Color(0xFF3C3B3E),
             ),
 
             ),),
@@ -88,11 +88,12 @@ Widget createFAQ(String question, String answer){
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text('FAQs',
-                        style: TextStyle(fontFamily: 'IrishGrover',fontSize: 20,
-                        color: Color.fromARGB(255, 81, 96, 129)))
+                        style: TextStyle(//fontFamily: 'IrishGrover',
+                        fontSize: 20,
+                        color: Color(0xFF3C3B3E),))
                     ],
                   ),
-                  Divider(color: Colors.blue,),
+                  Divider(color:Color(0xFF3C3B3E),),
                   SizedBox(height: 15,),
                   //general questions section
                   Column(
@@ -110,8 +111,8 @@ Widget createFAQ(String question, String answer){
                       Container(
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          color: const Color.fromARGB(255, 207, 223, 233)
+                          border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -124,9 +125,8 @@ Widget createFAQ(String question, String answer){
                       //question2
                       Container(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          color: const Color.fromARGB(255, 207, 223, 233)
+                        decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -153,9 +153,8 @@ Widget createFAQ(String question, String answer){
                       //question1
                       Container(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          color: const Color.fromARGB(255, 207, 223, 233)
+                        decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -168,9 +167,8 @@ Widget createFAQ(String question, String answer){
                       //question2
                       Container(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          color: const Color.fromARGB(255, 207, 223, 233)
+                        decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -197,9 +195,8 @@ Widget createFAQ(String question, String answer){
                       //question1
                       Container(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          color: const Color.fromARGB(255, 207, 223, 233)
+                        decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -224,9 +221,8 @@ Widget createFAQ(String question, String answer){
                           //question1
                           Container(
                             padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue),
-                              color: const Color.fromARGB(255, 207, 223, 233)
+                            decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -239,9 +235,8 @@ Widget createFAQ(String question, String answer){
                           //question2
                           Container(
                             padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue),
-                              color: const Color.fromARGB(255, 207, 223, 233)
+                            decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -268,9 +263,8 @@ Widget createFAQ(String question, String answer){
                           //question1
                           Container(
                             padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue),
-                              color: const Color.fromARGB(255, 207, 223, 233)
+                            decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -283,9 +277,8 @@ Widget createFAQ(String question, String answer){
                           //question2
                           Container(
                             padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue),
-                              color: const Color.fromARGB(255, 207, 223, 233)
+                            decoration: BoxDecoration(border: Border.all(color:const Color(0xFF8F8989),),
+                          color: Color(0xFFD9D9D9),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -301,21 +294,29 @@ Widget createFAQ(String question, String answer){
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text('Share your queries via email',
-                        style: TextStyle(fontFamily: 'IrishGrover',fontSize: 20,
-                        color: Color.fromARGB(255, 81, 96, 129)))
+                        style: TextStyle(//fontFamily: 'IrishGrover',
+                        fontSize: 20,
+                        color: Color(0xFF3C3B3E),))
                         ],
                       ),
-                      Divider(color: const Color.fromARGB(255, 11, 117, 82),),
+                      Divider(color: Color(0xFF3C3B3E),),
                       SizedBox(height: 20,),
+                      Row(children: [
+                        Text("Have other questions or need assistance? 💬 \nWe're here to help! Simply share your queries\nand our team will get back to you promptly. ",softWrap: true,)
+                      ],),
                       Row( mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                      Icon(Icons.mail, color: Colors.blue),
-                      Text('  Contact us via email. 24/7 Availability! ',softWrap: true,),
                       
-
+                      Text('Contact us via email. 24/7 Availability! 📧',softWrap: true,),
+                      //Icon(Icons.email_outlined, color:Color.fromARGB(255, 113, 110, 119),),
                       ]),
+                      
                       SizedBox(height: 20,),
-                      ElevatedButton(onPressed: launchEmail, child: Text('send email', style: TextStyle(color: Color.fromARGB(255, 81, 96, 129)),)),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF8F8989),
+                        ),
+                        onPressed: launchEmail, child: Text('send email', style: TextStyle(color: Colors.white,)),),
                       SizedBox(height: 20,),
                     ],
                   ),
