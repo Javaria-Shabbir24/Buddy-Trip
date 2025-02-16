@@ -30,16 +30,13 @@ class _LoginState extends State<Login> {
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Divider(
-              color: Colors.black,
-              thickness: 2,
-            ),
-            SizedBox(height: 40,),
+            
+            SizedBox(height: 30,),
             Center(
               child: Text('Log in to your account',
               style: TextStyle(
               fontSize: 28,
-              fontFamily: 'IrishGrover',
+              //fontFamily: 'IrishGrover',
               color: Color(0xFF3C3B3E),
             ),),
             ),
@@ -50,11 +47,11 @@ class _LoginState extends State<Login> {
               child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20,),
+                SizedBox(height: 30,),
                 Text('Username:',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -73,7 +70,7 @@ class _LoginState extends State<Login> {
                 Text('Password:',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -117,7 +114,7 @@ class _LoginState extends State<Login> {
                 }
               },
             child: Text('Log In',style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),), ),
             ),
@@ -138,7 +135,7 @@ class _LoginState extends State<Login> {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Resetpassword()));
                   },
                 child: Text('Reset Password',style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),)),
               ],
