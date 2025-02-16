@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
                 children: [
                   const Text('Let’s Get Started !',
                   style: TextStyle(
-                    fontFamily: 'IrishGrover',
+                    //fontFamily: 'IrishGrover',
                     fontSize: 26,
                   ),),
                   const SizedBox(height: 18,),
@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
                           SizedBox(width: 10,),
                           Text('Sign Up',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),
                           ),

@@ -40,7 +40,7 @@ class _SignupState extends State<Signup> {
               child: Text('Create an Account',
               style: TextStyle(
               fontSize: 30,
-              fontFamily: 'IrishGrover',
+              //fontFamily: 'IrishGrover',
               color: Color(0xFF3C3B3E),
             ),),
             ),
@@ -54,7 +54,7 @@ class _SignupState extends State<Signup> {
                 Text('Username:',
                 style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -73,7 +73,7 @@ class _SignupState extends State<Signup> {
                 Text('Email:',
                 style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -95,7 +95,7 @@ class _SignupState extends State<Signup> {
                 Text('Password:',
                 style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -119,7 +119,7 @@ class _SignupState extends State<Signup> {
                 Text('Confirm Password:',
                 style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  //fontWeight: FontWeight.bold,
                 ),),
                 SizedBox(height: 10,),
                 TextFormField(
@@ -167,7 +167,7 @@ class _SignupState extends State<Signup> {
                 }
               },
             child: Text('Sign up', style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.white),),
                ),
@@ -186,7 +186,7 @@ class _SignupState extends State<Signup> {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                   },
                 child: Text('Log in',style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: const Color(0xFF8F8989),),
 )),

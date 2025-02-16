@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Text(
               'The friend who knows the way',
               style: TextStyle(
-                fontFamily: 'IrishGrover',
+                //fontFamily: 'IrishGrover',
                 fontSize: 24,
               ),
               textAlign: TextAlign.center,
