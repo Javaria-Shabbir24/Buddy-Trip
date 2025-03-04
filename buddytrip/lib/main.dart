@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'onboardingscreen1.dart';
 import 'package:firebase_core/firebase_core.dart';
+String globalUsername='';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

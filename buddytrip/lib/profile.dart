@@ -1,3 +1,4 @@
+import 'package:buddytrip/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -59,12 +60,13 @@ class _ProfileState extends State<Profile> {
 
   @override
   void initState() {
+    
     setTheInitialStates();
     super.initState();
   }
   //Update the changes in database
   Future<void >updateValues()async{
-    await FirebaseFirestore.instance.collection('Users').where('username',isEqualTo: 'javeria').get().then(
+    await FirebaseFirestore.instance.collection('Users').where('username',isEqualTo: globalUsername).get().then(
       (querysnapshot){
         for(var doc in querysnapshot.docs){
           RegExp regex = RegExp(r'^[0-9]+$');
@@ -95,7 +97,7 @@ class _ProfileState extends State<Profile> {
     );
   }
   Future<void> setTheInitialStates()async{
-    QuerySnapshot querySnapshot= await FirebaseFirestore.instance.collection('Users').where('username',isEqualTo: 'javeria').get();
+    QuerySnapshot querySnapshot= await FirebaseFirestore.instance.collection('Users').where('username',isEqualTo: globalUsername).get();
     if(querySnapshot.docs.isNotEmpty){
       var userdata=querySnapshot.docs.first;
       setState(() {
