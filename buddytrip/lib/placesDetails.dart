@@ -173,7 +173,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                       color: Colors.black,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'IrishGrover'
+                      //fontFamily: 'IrishGrover'
                     ),
                     ),//the name of the location
                     SizedBox(height: 10,),
@@ -210,7 +210,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                           SizedBox(width: 10,),
                           Text('Read More',
                           style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 15,
                           color: Colors.black),
                           ),
@@ -249,7 +249,7 @@ class _PlacesdetailsState extends State<Placesdetails> {
                       children: [
                         Text('Current Weather Forecast',
                         style: TextStyle(
-                          fontFamily: 'IrishGrover',
+                          //fontFamily: 'IrishGrover',
                           fontSize: 20
                         ),),
                       ],

@@ -11,6 +11,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
   final formKey= GlobalKey<FormState>();// key to maintain the state of the form
   final usernameController= TextEditingController();
   final passwordController= TextEditingController();
@@ -154,6 +155,7 @@ class _SignupState extends State<Signup> {
                 String name=usernameController.text.trim();
                 String password=passwordController.text.trim();
                 String email=emailController.text.trim();
+                
                 await saveTheDataToDatabase(name,password,email);
                 //empty fields
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -212,6 +214,9 @@ Future<void> saveTheDataToDatabase(String username, String password, String emai
       'username':username,
       'password':password,
       'email':email,
+      'gender':null,
+      'phone':null,
+      'profilePicture':'',
       }
     );
     

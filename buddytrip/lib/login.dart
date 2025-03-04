@@ -1,4 +1,5 @@
 import 'package:buddytrip/homepage.dart';
+import 'package:buddytrip/main.dart';
 import 'package:buddytrip/resetpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -97,6 +98,9 @@ class _LoginState extends State<Login> {
                 String name=usernameController.text.trim();
                 String password=passwordController.text.trim();
                 if (await verifyCredentials(name,password)){// if credentials matched
+                setState(() {
+                  globalUsername=name;
+                });
                 //empty fields
                 usernameController.clear();
                 passwordController.clear();
