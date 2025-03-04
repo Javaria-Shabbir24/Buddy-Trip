@@ -52,6 +52,29 @@
     - Securely log out from the app.  
 
 ## 📸 Screenshots  
+<img src="buddytrip/assets/Main.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/welcome.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/1.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/2.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/3.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/4.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/5.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/6.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/7.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/8.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/9.jpeg" alt="BuddyTrip Logo" width="200" height="550">
+<img src="buddytrip/assets/10.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/11.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/12.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/13.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/14.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/15.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/16.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/17.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/18.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/19.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/20.jpeg" alt="BuddyTrip Logo" width="200" height="450">
+<img src="buddytrip/assets/21.jpeg" alt="BuddyTrip Logo" width="200" height="800">
  
 
 ## 📦 Installation  
